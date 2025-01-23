@@ -1,0 +1,269 @@
+/* article-style.css */
+
+/***********************************************
+  ARTICLE STYLES
+***********************************************/
+
+/* General Styles */
+.article-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0; /* Removed padding for alignment */
+  color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 3rem 0;
+  margin: 0 0; /* Removed horizontal margins */
+  text-align: left;
+}
+
+.hero-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between; /* Ensures spacing between text and image */
+}
+
+.hero-text {
+  flex: 1 1 400px;
+}
+
+.hero-text h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #0052ff;
+}
+
+.hero-text p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+}
+
+.platforms-section {
+  margin-top: 1rem;
+}
+
+.platform-icons {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  font-size: 1.5rem;
+  color: #0052ff;
+}
+
+.hero-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Introduction Section */
+.introduction-section {
+  padding: 3rem 0;
+  text-align: left;
+}
+
+.introduction-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #0052ff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.introduction-section p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.benefits-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: #0052ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.three-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.feature-box {
+  background: #fff;
+  border-radius: 6px;
+  padding: 2rem;
+  flex: 1 1 250px;
+  border: 1px solid #b7b7b7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.feature-box:hover {
+  transform: translateY(-3px);
+}
+
+.feature-box i {
+  font-size: 2rem;
+  color: #0052ff;
+  margin-bottom: 1rem;
+}
+
+.feature-box h3 {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.feature-box p {
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* How Breezy AI Helps Section */
+.how-breezy-helps-section {
+  padding: 3rem 0;
+  text-align: left;
+}
+
+.how-breezy-helps-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #0052ff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.how-breezy-helps-section p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.how-breezy-helps-section h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  color: #0052ff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.supported-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.platform-card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 1.5rem;
+  flex: 1 1 200px;
+  border: 1px solid #b7b7b7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.platform-card:hover {
+  transform: translateY(-3px);
+}
+
+.platform-card i {
+  font-size: 2rem;
+  color: #0052ff;
+  margin-bottom: 0.5rem;
+}
+
+.platform-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.platform-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Features Section */
+.features-section {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: #0052ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.features-section .three-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.features-section .feature-box {
+  background: #fff;
+  border-radius: 6px;
+  padding: 2rem;
+  flex: 1 1 250px;
+  border: 1px solid #b7b7b7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.features-section .feature-box:hover {
+  transform: translateY(-3px);
+}
+
+.features-section .feature-box i {
+  font-size: 2rem;
+  color: #0052ff;
+  margin-bottom: 1rem;
+}
+
+.features-section .feature-box h3 {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.features-section

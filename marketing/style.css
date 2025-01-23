@@ -1,0 +1,1044 @@
+/***********************************************
+  GLOBAL / RESET
+***********************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #F8F9FA; /* As requested for overall background */
+  color: #333;
+}
+
+/* Container helper class for consistent max-width */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/***********************************************
+  NAV / HEADER
+***********************************************/
+.header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.logo {
+  font-weight: 500; /* Medium weight for headings */
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0052ff;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+.nav-links li a:hover {
+  color: #0052ff;
+}
+.nav-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.cta-btn {
+  background: #0052ff;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+.cta-btn:hover {
+  background: #003ecc;
+}
+.secondary-btn {
+  background: #fff;
+  color: #0052ff;
+  border: 1px solid #0052ff;
+}
+.secondary-btn:hover {
+  background: #0052ff;
+  color: #fff;
+}
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.menu-toggle i {
+  color: #333;
+}
+
+/* Mobile Nav */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    background: #fff;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/***********************************************
+  HERO
+***********************************************/
+.hero-section {
+  background-color: #F8F9FA;
+  padding: 3rem 0;
+  margin: 0 2rem 0rem 2rem;
+  text-align: left;
+}
+.hero-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.hero-text {
+  flex: 1 1 400px;
+  margin-bottom: 1rem;
+}
+.hero-text h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #0052ff;
+}
+.hero-text p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.hero-image {
+  flex: 1 1 200px;
+}
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 2rem 0;
+  }
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-text, .hero-image {
+    flex: none;
+    width: 100%;
+    padding: 2rem;
+  }
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* COMPARISON SECTION */
+.comparison-section {
+  padding: 3rem 1rem;
+  background: #fff;
+}
+.comparison-container {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.comparison-container h2 {
+  font-size: 1.8rem;
+  color: #0052ff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.comparison-desc {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* SLIDER WRAPPER */
+.slider-wrapper {
+  margin-bottom: 2rem;
+}
+.slider-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+.slider-label i {
+  margin-right: 0.5rem;
+  color: #0052ff;
+}
+#msgSlider {
+  width: 100%;
+  cursor: pointer;
+}
+.slider-values {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+#msgCount {
+  color: #0052ff;
+}
+
+/* RESULTS DISPLAY */
+.results-display {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.result-card {
+  flex: 1 1 200px;
+  background: #f9f9f9;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+.result-card:hover {
+  transform: translateY(-3px);
+}
+.result-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+.result-card p.cost {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0052ff;
+}
+
+/* NOTE */
+.note {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .result-card h3 {
+    font-size: 0.95rem;
+  }
+  .result-card p.cost {
+    font-size: 1.1rem;
+  }
+}
+
+
+/***********************************************
+  TRUSTED BY BUSINESSES
+***********************************************/
+.trusted-section {
+  background: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+.trusted-section h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* The outer wrap to hide overflow and center the slider */
+.slider-wrap {
+  overflow: hidden;
+  margin: 1rem auto;
+  width: 100%; /* Adjust as needed */
+}
+
+/* The slider itself is very wide & uses an animation to slide left */
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  /* For a straightforward loop, make it wide enough to show & repeat slides */
+  width: calc(200px * 6); /* Example width; adjust based on # of slides */
+
+  /* Infinite horizontal movement */
+  animation: slide 15s linear infinite;
+}
+
+/* Each "slide" is an 80×80 image (rounded corners if desired) */
+.slide img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Keyframes for continuous leftward movement
+   If 100% is -50%, it repeats halfway. If you have many slides,
+   you can do -100% or any other fraction. */
+@keyframes slide {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+
+.pain-solution-section {
+  background: #fff; /* or match your site’s background */
+  padding: 1rem 0 2rem 0;
+  /* fade-in can be handled by your IntersectionObserver
+     if you have .fade-in-on-scroll logic in JS */
+}
+
+.pain-solution-wrap {
+  margin: 0 2rem 0rem 2rem;
+  display: flex;
+  align-items: flex-start;  /* top alignment so columns line up at the top */
+  justify-content: space-between;
+  gap: 2rem;               /* space between columns */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;         /* horizontal padding inside container */
+}
+
+/* PAIN COLUMN */
+.pain-col {
+  flex: 1;
+  border: 1px solid #ccc;  /* thin gray border */
+  border-radius: 6px;
+  padding: 2rem;
+  background: #fafafa;     /* subtle background or keep white, your preference */
+}
+
+.pain-col h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.pain-col p {
+  line-height: 1.6;
+  color: #555;
+}
+
+/* SOLUTION COLUMN */
+.solution-col {
+  flex: 1;
+  border: 3px solid #0052ff; /* thicker blue border */
+  border-radius: 6px;
+  padding: 2rem;
+  background: #f5f9ff;       /* very light bluish background for emphasis */
+  color: #0052ff;
+}
+
+.solution-col h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #0052ff;            /* keep headings in blue tone */
+}
+
+.solution-col p {
+  line-height: 1.6;
+  font-weight: 400;          /* normal weight, but color remains #0052ff */
+}
+
+/* RESPONSIVE MEDIA QUERY */
+@media (max-width: 768px) {
+  .pain-solution-wrap {
+    flex-direction: column;
+  }
+  .pain-col, .solution-col {
+    flex: none;
+    max-width: 100%;
+    margin: 0 2rem 1.5rem 2rem; /* stack columns, add spacing at bottom of each */
+  }
+  .solution-col {
+    margin-bottom: 0; /* final column can have 0 bottom margin if you prefer */
+  }
+}
+
+
+
+/***********************************************
+  WHY SECTION
+***********************************************/
+.why-section {
+  background-color: #F8F9FA;
+  padding: 3rem 0;
+  text-align: center;
+}
+.why-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.three-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.feature-box {
+  background: #fff;
+  border-radius: 6px;
+  padding: 2rem;
+  flex: 1 1 250px;
+  border: 1px solid #b7b7b7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+.feature-box:hover {
+  transform: translateY(-3px);
+}
+.feature-box i {
+  font-size: 2rem;
+  color: #0052ff;
+  margin-bottom: 1rem;
+}
+.feature-box h3 {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.feature-box p {
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .feature-box {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+
+/***********************************************
+  SUPPORTED PLATFORMS
+***********************************************/
+.platforms-section {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+.platforms-section h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.platform-icons {
+  display: flex;
+  gap: 2rem;
+  /*justify-content: center;*/
+  font-size: 1.5rem;
+  color: gray;
+}
+
+@media (max-width: 768px) {
+  .platform-icons {
+    justify-content: center;
+  }
+}
+
+
+/***********************************************
+  SUPERCHARGE SECTION
+***********************************************/
+/***********************************************
+  CONTAINER & SECTION
+***********************************************/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Remove horizontal padding so the image can flush
+     to the container's left/right edges */
+  padding: 0;
+}
+
+.detailed-info-section {
+  background: #fff; /* or match your theme color */
+  padding: 2rem 0;
+}
+
+.detailed-info-wrap {
+  display: flex;
+  align-items: center;
+  /* No or minimal gap, so the image can fully stretch to the side */
+  gap: 0;
+}
+
+/***********************************************
+  IMAGE (LEFT SIDE)
+***********************************************/
+.detailed-info-image {
+  flex: 1;
+  /* No extra margin/padding => flush to container edge */
+  margin: 0;
+  text-align: left;  /* optional if you want the image left-aligned */
+}
+.detailed-info-image img {
+  display: block;    /* remove default inline spacing */
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/***********************************************
+  TEXT CONTENT (RIGHT SIDE)
+***********************************************/
+.detailed-info-content {
+  flex: 1;
+  /* Provide some internal padding so text isn't flush
+     against the container's edge */
+  padding: 2rem;
+}
+
+.detailed-info-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.detailed-info-content p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/***********************************************
+  BENEFITS LIST
+***********************************************/
+.detailed-benefits-list {
+  list-style: none;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+.detailed-benefits-list li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.detailed-benefits-list li i {
+  color: #0052ff;
+  font-size: 1.2rem;
+  margin-top: 3px; /* helps align icon with text */
+}
+
+/***********************************************
+  CTA
+***********************************************/
+.info-cta .cta-button {
+  background: #0052ff;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.info-cta .cta-button:hover {
+  background: #003ecc;
+}
+
+@media (max-width: 768px) {
+  .detailed-info-content {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+/***********************************************
+  FADE-IN (SCROLL) ANIMATION (EXAMPLE)
+***********************************************/
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/***********************************************
+  RESPONSIVE
+***********************************************/
+@media (max-width: 768px) {
+  .detailed-info-wrap {
+    flex-direction: column;
+  }
+  .detailed-info-content {
+    padding: 1.5rem;
+  }
+  /* The image will stack above the text (since it's first in HTML) */
+  .detailed-info-image {
+    margin-bottom: 1.5rem;
+  }
+}
+
+
+/***********************************************
+  HOW EASY (TIMELINE)
+***********************************************/
+.steps-section {
+  background: #fafafa; /* or your preferred color */
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.steps-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+/* DESKTOP (>= 769px) */
+@media (min-width: 769px) {
+  .steps-row {
+    display: flex;
+    flex-wrap: nowrap; /* Keep all steps on one row */
+    justify-content: center;  /* Center horizontally */
+    gap: 1rem;                /* Gap between boxes/connectors */
+  }
+  .step-box {
+    width: 250px;            /* Fixed width so we get a neat row of 4 steps */
+    background: #fff;
+    padding: 2rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    flex: 0 0 auto;          /* Don’t let flex shrink/grow beyond 220px */
+  }
+  .step-box:hover {
+    transform: translateY(-3px);
+  }
+  .step-box i {
+    font-size: 1.8rem;
+    color: #0052ff;
+    margin-bottom: 0.5rem;
+  }
+  .step-box h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .step-box p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* The connector line between steps */
+  .step-connector {
+    width: 40px;
+    height: 2px;
+    background: #ccc;
+    align-self: center;
+    /* treat connector like a “box” so it sits between step boxes */
+  }
+}
+
+/* MOBILE (<= 768px) => 2 columns × 2 rows, no connectors */
+@media (max-width: 768px) {
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-gap: 1rem;  /* space around each step */
+    justify-content: center;
+    margin: 0 auto;  /* center container horizontally */
+  }
+
+  /* Hide connectors on mobile */
+  .step-connector {
+    display: none;
+  }
+
+  .step-box {
+    background: #fafafa;
+    padding: 1.5rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    width: 100%;  /* auto-fit in the grid column */
+  }
+  .step-box:hover {
+    transform: translateY(-3px);
+  }
+  .step-box i {
+    font-size: 1.6rem;
+    color: #0052ff;
+    margin-bottom: 0.5rem;
+  }
+  .step-box h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .step-box p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+}
+
+
+
+/***********************************************
+  REVIEWS
+***********************************************/
+.reviews-section {
+  background: #fff;
+  padding: 3rem 0;
+  text-align: center;
+}
+.reviews-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.review-box {
+  background: #F8F9FA;
+  border-radius: 6px;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.review-img {
+  width: 60px;
+  height: 60px;
+  background: #0052ff;
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  font-size: 1.2rem;
+}
+.review-box p {
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.review-box h4 {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/***********************************************
+  FINAL CTA
+***********************************************/
+.final-cta-section {
+  padding: 60px 20px;
+  background-color: #f0f8ff; /* Light background to make CTA stand out */
+  text-align: center;
+}
+
+.final-cta-section .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.final-cta-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.final-cta-section p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #555555;
+}
+
+.final-cta-section .free-credits {
+  color: #007BFF; /* Distinct color to highlight the offer */
+}
+
+/* CTA Buttons Container */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+  flex-wrap: wrap; /* Allows buttons to stack on smaller screens */
+}
+
+/* Primary CTA Button Styling */
+.cta-large {
+  background-color: #007BFF; /* Primary color */
+  color: #ffffff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-large:hover,
+.cta-large:focus {
+  background-color: #0056b3; /* Darker shade on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+
+/* Secondary CTA Outline Button Styling */
+.cta-outline {
+  background-color: transparent;
+  color: #007BFF;
+  padding: 15px 30px;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.cta-outline:hover,
+.cta-outline:focus {
+  background-color: #007BFF;
+  color: #ffffff;
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+
+/* Icon Spacing */
+.cta-outline i {
+  margin-right: 8px; /* Space between icon and text */
+  vertical-align: middle;
+}
+
+/***********************************************
+  FOOTER
+***********************************************/
+.footer {
+  background: #fafafa;
+  border-top: 1px solid lightgray;
+  padding: 2rem 0;
+  text-align: center;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  gap: 0.5rem;
+}
+
+.footer p {
+  color: #535353;
+  font-weight: 500;
+}
+.footer-logo {
+  font-size: 1.2rem;
+  color: #535353;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer img {
+  fill: #535353;
+}
+
+.payment-icons {
+  color: #535353;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/***********************************************
+  LOADING OVERLAY
+***********************************************/
+.loading-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top-color: #0052ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/***********************************************
+  SCROLL FADE-IN ANIMATION
+***********************************************/
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/***********************************************
+  MEDIA QUERIES
+***********************************************/
+@media (max-width: 768px) {
+  .steps-row {
+    flex-direction: column;
+  }
+  .step-connector {
+    display: none;
+  }
+}
+
+.help-section {
+  margin-top: 50px;
+}
+
+/*HELP PAGE */
+.help-container {
+  max-width: 800px;
+  margin: 0 auto;
+
+  text-align: left;
+}
+
+.help-section {
+  margin-bottom:50px;
+}
+
+.help-section h1 {
+  margin-bottom: 20px;
+}
+
+.help-item {
+  margin: 0 2rem 0 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.help-item:hover {
+  background-color: #f1f1f1;
+}
+
+.help-item h3 {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.help-item h3 .toggle-icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.help-item.active h3 .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.help-item p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  margin-top: 10px;
+}
+
+.help-item.active p {
+  max-height: 500px; /* Adjust as needed */
+  opacity: 1;
+  margin-top: 10px;
+}
+
+/* Class to remove all decorations from anchor tags */
+.no-decoration {
+  text-decoration: none; /* Removes underlines */
+  border: none;          /* Removes borders */
+  padding: 0;            /* Removes padding */
+  margin: 0;             /* Removes margin */
+  color: inherit;        /* Inherits text color from parent */
+  display: inline-block; /* Allows width and height to be set if needed */
+}
+
+/* Ensures that images inside no-decoration anchors are displayed properly */
+.no-decoration img.logo-image {
+  display: block;        /* Removes the small space below images */
+  height: 60px;          /* Sets the desired height */
+  width: auto;           /* Maintains aspect ratio */
+}
+
+section[id] {
+  scroll-margin-top: 60px; /* Height of your navbar */
+}
