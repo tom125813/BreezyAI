@@ -1,0 +1,197 @@
+<!-- File: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Breezy - Dashboard" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Breezy</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <!-- Chart.js (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+  <!-- Dashboard-Specific Styles -->
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <!-- Sidebar Component -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar Component -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Dashboard Section -->
+    <section id="dashboardSection" class="dashboard-section active-section">
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <h2>Welcome back, Tom!</h2>
+        <p>Here's a quick overview of your account.</p>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Quick Stats -->
+      <div class="quick-stats">
+        <div class="stat-card">
+          <i class="fas fa-message"></i>
+          <div class="stat-info">
+            <h3>150</h3>
+            <p>Total Messages</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-coins"></i>
+          <div class="stat-info">
+            <h3>50</h3>
+            <p>Credits Remaining</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-link"></i>
+          <div class="stat-info">
+            <h3>4</h3>
+            <p>Connected Accounts</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-user-cog"></i>
+          <div class="stat-info">
+            <h3>3</h3>
+            <p>Pending Actions</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-bell"></i>
+          <div class="stat-info">
+            <h3>5</h3>
+            <p>Notifications</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Combined Activities and Notifications Section -->
+      <div class="activities-notifications-section">
+        <!-- Recent Activities -->
+        <div class="recent-activities">
+          <h3>Recent Activities</h3>
+          <ul>
+            <li>
+              <i class="fas fa-check-circle activity-icon success"></i>
+              <span>Your X account was successfully connected.</span>
+              <span class="activity-time">2 hours ago</span>
+            </li>
+            <li>
+              <i class="fas fa-exclamation-circle activity-icon warning"></i>
+              <span>Credit balance is low. Consider purchasing more credits.</span>
+              <span class="activity-time">1 day ago</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope activity-icon info"></i>
+              <span>New message from @happyuser.</span>
+              <span class="activity-time">3 days ago</span>
+            </li>
+            <!-- Add more activities as needed -->
+          </ul>
+        </div>
+
+
+        <!-- Upcoming Tasks -->
+        <div class="upcoming-tasks">
+          <h3>Upcoming Tasks</h3>
+          <ul>
+            <li>
+              <i class="fas fa-calendar-check activity-icon"></i>
+              <span>Review and respond to pending messages.</span>
+              <span class="activity-time">Tomorrow</span>
+            </li>
+            <li>
+              <i class="fas fa-credit-card activity-icon"></i>
+              <span>Auto-purchase credits set for next week.</span>
+              <span class="activity-time">Next Monday</span>
+            </li>
+            <!-- Add more tasks as needed -->
+          </ul>
+        </div>
+
+        <!-- Notifications -->
+        <div class="notifications">
+          <h3>Notifications</h3>
+          <ul>
+            <li>You have a new message from @user456.</li>
+            <li>Your profile was updated successfully.</li>
+            <!-- More notifications -->
+          </ul>
+        </div>
+
+        <!-- Announcements -->
+        <div class="announcements">
+          <h3>Announcements</h3>
+          <ul>
+            <li>New feature: Scheduled Responses are now available!</li>
+            <li>Maintenance scheduled for next Saturday.</li>
+            <!-- More announcements -->
+          </ul>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Optional: Additional Useful Sections -->
+      <!-- Example: Recent Purchases, Support Tickets, etc. -->
+      <div class="additional-sections">
+        <!-- Recent Purchases -->
+        <div class="recent-purchases">
+          <h3>Recent Purchases</h3>
+          <ul>
+            <li>
+              <span>Purchased 5,000 Credits</span>
+              <span class="purchase-time">$44.99 - 1 week ago</span>
+            </li>
+            <li>
+              <span>Purchased 1,000 Credits</span>
+              <span class="purchase-time">$9.99 - 2 weeks ago</span>
+            </li>
+            <!-- Add more purchases as needed -->
+          </ul>
+        </div>
+
+        <!-- Support Tickets -->
+        <div class="support-tickets">
+          <h3>Support Tickets</h3>
+          <ul>
+            <li>
+              <span>Issue with Facebook Integration</span>
+              <span class="ticket-status">Open</span>
+            </li>
+            <li>
+              <span>Billing Inquiry</span>
+              <span class="ticket-status">Resolved</span>
+            </li>
+            <!-- Add more tickets as needed -->
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Scripts -->
+  <script src="js/base.js"></script>
+  <!-- Dashboard-Specific Scripts -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

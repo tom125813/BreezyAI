@@ -1,0 +1,171 @@
+<!-- File: messages.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Breezy - Message Management" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messages - Breezy Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+
+  <!-- Chart.js (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+
+  <!-- Messages-Specific Styles -->
+  <link rel="stylesheet" href="css/messages.css" />
+</head>
+<body>
+  <!-- Sidebar Component -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar Component -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Messages Section -->
+    <section id="messagesSection" class="dashboard-section active-section">
+      <h2><i class="fas fa-envelope"></i> Message Dashboard</h2>
+      <p>
+        Stay on top of customer interactions with real-time updates and easy message management.
+        <br>
+        Track, respond, and organize conversations efficiently to enhance your customer experience.
+      </p>
+      <div class="divider"></div>
+
+      <!-- Interactive Filters -->
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="action-needed">Action Needed</button>
+        <button class="filter-btn" data-filter="resolved">Resolved</button>
+        <button class="filter-btn" data-filter="pending">Pending Reply</button>
+        <button class="filter-btn" data-filter="generating">Generating Response</button>
+      </div>
+
+      <br>
+
+      <!-- Message Categories -->
+      <div class="message-category action-needed">
+        <h3>Requires Human Attention (3)</h3>
+        <div class="message-thread action-needed" tabindex="0" data-target="threadSection">
+          <i class="fab fa-twitter platform-icon"></i>
+          <div class="thread-info">
+            <p class="user-handle">@user123</p>
+            <p class="summary">Issue with delayed order delivery...</p>
+            <p class="timestamp">2 hours ago</p>
+          </div>
+          <span class="status action-needed">
+            <i class="fas fa-exclamation-circle"></i> Action Needed
+          </span>
+          <i class="fas fa-chevron-right view-thread"></i>
+        </div>
+
+        <div class="message-thread action-needed" tabindex="0">
+          <i class="fab fa-facebook-f platform-icon"></i>
+          <div class="thread-info">
+            <p class="user-handle">JohnDoe</p>
+            <p class="summary">Payment failed multiple times...</p>
+            <p class="timestamp">1 day ago</p>
+          </div>
+          <span class="status action-needed">
+            <i class="fas fa-exclamation-circle"></i> Action Needed
+          </span>
+          <i class="fas fa-chevron-right view-thread"></i>
+        </div>
+
+        <div class="message-thread action-needed" tabindex="0">
+          <i class="fab fa-instagram platform-icon"></i>
+          <div class="thread-info">
+            <p class="user-handle">@instafit</p>
+            <p class="summary">Request for product exchange...</p>
+            <p class="timestamp">3 days ago</p>
+          </div>
+          <span class="status action-needed">
+            <i class="fas fa-exclamation-circle"></i> Action Needed
+          </span>
+          <i class="fas fa-chevron-right view-thread"></i>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- AI-Handled Conversations -->
+      <div class="message-category ai-handled">
+        <h3>AI-Handled Conversations (4)</h3>
+        <div class="message-thread resolved" tabindex="0">
+          <i class="fab fa-twitter platform-icon"></i>
+          <div class="thread-info">
+            <p class="user-handle">@happyuser</p>
+            <p class="summary">Thanking for the excellent service...</p>
+            <p class="timestamp">5 hours ago</p>
+          </div>
+          <span class="status resolved">
+            <i class="fas fa-check-circle"></i> Resolved
+          </span>
+          <i class="fas fa-chevron-right view-thread"></i>
+        </div>
+
+        <div class="message-thread pending" tabindex="0">
+          <i class="fab fa-facebook-f platform-icon"></i>
+          <div class="thread-info">
+            <p class="user-handle">JaneSmith</p>
+            <p class="summary">Checking the availability of an item...</p>
+            <p class="timestamp">Yesterday</p>
+          </div>
+          <span class="status pending">
+            <i class="fas fa-clock"></i> Pending Reply
+          </span>
+          <i class="fas fa-chevron-right view-thread"></i>
+        </div>
+
+        <div class="message-thread generating" tabindex="0">
+          <i class="fab fa-instagram platform-icon"></i>
+          <div class="thread-info">
+            <p class="user-handle">@instashop</p>
+            <p class="summary">Inquiry about shipping times...</p>
+            <p class="timestamp">30 minutes ago</p>
+          </div>
+          <span class="status generating">
+            <i class="fas fa-sync-alt"></i> Generating Response
+          </span>
+          <i class="fas fa-chevron-right view-thread"></i>
+        </div>
+
+        <div class="message-thread generating" tabindex="0">
+          <i class="fab fa-twitter platform-icon"></i>
+          <div class="thread-info">
+            <p class="user-handle">@dave321</p>
+            <p class="summary">Asking about product stock...</p>
+            <p class="timestamp">10 minutes ago</p>
+          </div>
+          <span class="status generating">
+            <i class="fas fa-sync-alt"></i> Generating Response
+          </span>
+          <i class="fas fa-chevron-right view-thread"></i>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Scripts -->
+  <script src="js/base.js" defer></script>
+
+  <!-- Messages-Specific Scripts -->
+</body>
+</html>

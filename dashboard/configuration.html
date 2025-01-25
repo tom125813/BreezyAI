@@ -1,0 +1,180 @@
+<!-- File: messages.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Breezy - Message Management" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messages - Breezy Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+
+  <!-- Chart.js (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+
+  <!-- Messages-Specific Styles -->
+  <link rel="stylesheet" href="css/configuration.css" />
+</head>
+<body>
+  <!-- Sidebar Component -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar Component -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Messages Section -->
+    <!-- CONFIGURATION TAB -->
+    <section id="configurationSection" class="dashboard-section">
+      <h2><i class="fas fa-cog"></i> Configuration</h2>
+      <p>Set up Breezy and customise your settings to match your brand voice and maximize performance.</p>
+      <hr class="divider">
+
+      <!-- Link Your Social Accounts -->
+      <h3>Link Your Social Accounts</h3><br>
+      <div class="connections-grid">
+        <!-- X/TWITTER CONNECT -->
+        <div class="connection-card">
+          <i class="fab fa-twitter platform-icon"></i>
+          <p>Connect your X account to manage DMs and mentions.</p>
+          <button class="connect-btn" onclick="connectPlatform('Twitter')">Connect</button>
+        </div>
+        <!-- FACEBOOK CONNECT -->
+        <div class="connection-card">
+          <i class="fab fa-facebook-f platform-icon facebook"></i>
+          <p>Connect your Facebook page for automated responses.</p>
+          <button class="connect-btn" onclick="connectPlatform('Facebook')">Connect</button>
+        </div>
+        <!-- INSTAGRAM CONNECT -->
+        <div class="connection-card">
+          <i class="fab fa-instagram platform-icon instagram"></i>
+          <p>Automate responses for your Instagram DMs.</p>
+          <button class="connect-btn" onclick="connectPlatform('Instagram')">Connect</button>
+        </div>
+        <!-- WHATSAPP CONNECT -->
+        <div class="connection-card">
+          <i class="fab fa-whatsapp platform-icon whatsapp"></i>
+          <p>Enable WhatsApp automation via API.</p>
+          <button class="connect-btn" onclick="connectPlatform('WhatsApp')">Connect</button>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Personalize Your Experience -->
+      <h3>Personalize Your Experience</h3>
+      <form class="config-form">
+        <!-- Brand Tone Section -->
+        <div class="config-section grid-layout">
+          <h4>Set Your Brand Tone</h4>
+          <p>Select a tone that best reflects your brand personality.</p>
+          <div class="grid-item">
+            <label for="brandTone">Tone Style:</label>
+            <select id="brandTone" name="brandTone">
+              <option>Friendly</option>
+              <option>Professional</option>
+              <option>Casual</option>
+              <option>Formal</option>
+              <option>Playful</option>
+              <option>Empathetic</option>
+              <option>Witty</option>
+              <option>Technical</option>
+              <option>Concise</option>
+              <option>Enthusiastic</option>
+              <option>Luxury</option>
+              <option>Trustworthy</option>
+              <option>Youthful</option>
+              <option>Bold</option>
+              <option>Relaxed</option>
+            </select>
+            <p class="tone-examples">
+              "Hey there! 😊 How can I assist you today?"
+            </p>
+          </div>
+        </div>
+
+        <!-- Response Scheduling Section -->
+        <div class="config-section grid-layout">
+          <h4>Response Scheduling</h4>
+          <p>Leave unchecked to keep auto responses active 24/7. Check to enable responses only within a specific time frame.</p>
+          <div class="grid-item">
+            <label class="switch-label">
+              <input type="checkbox" id="autoResponses"> Turn On Responses Within Timeframe
+            </label>
+            <div id="timeFramePicker" class="time-frame-picker">
+              <label for="startTime">Start Time:</label>
+              <input type="time" id="startTime" name="startTime">
+              <label for="endTime">End Time:</label>
+              <input type="time" id="endTime" name="endTime">
+            </div>
+          </div>
+        </div>
+
+        <!-- Escalation to Human Support Section -->
+        <div class="config-section grid-layout">
+          <h4>Escalation to Human Support</h4>
+          <p>Choose how to handle messages requiring human attention.</p>
+          <div class="grid-item">
+            <label class="switch-label">
+              <input type="checkbox" id="aiDetection"> Use AI Detection <strong>(Recommended)</strong>
+            </label>
+            <label class="switch-label">
+              <input type="checkbox" id="keywordList"> Use Custom Keyword List
+            </label>
+            <textarea id="humanKeywords" name="humanKeywords" rows="3" placeholder="Enter keywords, separated by commas (e.g., problem, issue, complaint)" disabled></textarea>
+          </div>
+        </div>
+
+        <!-- AI Training Section -->
+        <div class="config-section grid-layout">
+          <h4>AI Training</h4>
+          <p>Add common questions and their responses.</p>
+          <div class="faq-list" id="faqList">
+            <div class="faq-item">
+              <input type="text" placeholder="Enter Question" class="faq-question" name="faqQuestion[]">
+              <textarea placeholder="Enter Answer" class="faq-answer" name="faqAnswer[]"></textarea>
+            </div>
+          </div>
+          <button type="button" id="addFaqBtn" class="add-faq-btn">
+            <i class="fas fa-plus"></i> Add FAQ
+          </button>
+        </div>
+
+        <!-- Placeholder Sections -->
+        <div class="config-section grid-layout">
+          <h4>Not Available Yet</h4>
+        </div>
+
+        <div class="config-section grid-layout">
+          <h4>Not Available Yet</h4>
+        </div>
+
+        <!-- Save Configuration Button -->
+        <button type="submit" class="save-btn">Save Configuration</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Shared Scripts -->
+  <script src="js/base.js"></script>
+
+  <!-- Messages-Specific Scripts -->
+</body>
+</html>

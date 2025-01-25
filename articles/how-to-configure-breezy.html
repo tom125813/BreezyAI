@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Step-by-step tutorial on how to configure Breezy to automate your social media responses. Learn to link your accounts, personalize AI interactions, and optimize customer engagement." />
+  <meta name="keywords" content="Breezy configuration tutorial, social media automation setup, AI customer service guide, link social accounts, personalize AI responses, automate social media" />
+  <meta name="author" content="Breezy" />
+  <title>How to Configure Breezy | Step-by-Step Tutorial for Social Media Automation</title>
+
+  <!-- Primary Stylesheet -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 0;
+    }
+    header {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    .nav-actions a {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+    .cta-btn {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .secondary-btn {
+      background-color: #6c757d;
+      color: #fff;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+    }
+    main {
+      padding: 40px 0;
+    }
+    h1, h2, h3 {
+      color: #007bff;
+    }
+    ul.steps-list, ul.tips-list {
+      list-style: none;
+      padding: 0;
+    }
+    ul.steps-list li, ul.tips-list li {
+      background: #f1f1f1;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+    }
+    ul.steps-list li i, ul.tips-list li i {
+      margin-right: 10px;
+      color: #007bff;
+    }
+    .subsection {
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .cta-section {
+      background-color: #007bff;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .cta-buttons a {
+      text-decoration: none;
+      padding: 15px 25px;
+      margin: 10px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .cta-large {
+      background-color: #fff;
+      color: #007bff;
+      font-weight: bold;
+    }
+    .cta-outline {
+      background-color: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      justify-content: center;
+    }
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      border-top: 1px solid #e0e0e0;
+      text-align: center;
+    }
+    .footer-social a {
+      margin: 0 10px;
+      color: #333;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+      }
+    }
+  </style>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="How to Configure Breezy | Automate Your Social Media Responses" />
+  <meta property="og:description" content="Step-by-step tutorial on configuring Breezy for automating your social media interactions. Enhance customer engagement and boost sales with our AI-powered solutions." />
+  <meta property="og:image" content="https://placehold.co/1200x630" />
+  <meta property="og:url" content="https://www.breezyai.com/configure" />
+  <meta property="og:type" content="article" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Configure Breezy | Automate Your Social Media Responses" />
+  <meta name="twitter:description" content="Learn how to set up Breezy for automating your social media interactions. Follow our step-by-step tutorial to enhance customer engagement with AI-powered responses." />
+  <meta name="twitter:image" content="https://placehold.co/1200x630" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar container" aria-label="Main Navigation">
+      <div class="logo">
+        <a href="../index.html" class="no-decoration" aria-label="Breezy Home">
+          <img src="https://placehold.co/150x50" alt="Breezy Logo" class="logo-image">
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../features.html">Features</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li><a href="../help.html">Help</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../signup.html" class="cta-btn">Sign Up</a>
+        <a href="../login.html" class="cta-btn secondary-btn">Log In</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="configure-container container">
+    <!-- Introduction -->
+    <section class="introduction-section">
+      <div class="intro-wrap">
+        <figure class="intro-image">
+          <img src="https://placehold.co/600x300" alt="Breezy Configuration Tutorial" loading="lazy">
+        </figure>
+        <div class="intro-content">
+          <h1>How to Configure Breezy</h1>
+          <p>
+            Welcome to the Breezy configuration tutorial! This step-by-step guide will help you set up Breezy to automate your social media responses effectively. Learn how to link your social accounts, personalize AI interactions, and optimize your customer engagement seamlessly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 1: Link Your Social Accounts -->
+    <section class="step-section">
+      <h2>1. Link Your Social Accounts</h2>
+      <p>Connect your social media platforms to manage all interactions from a centralized dashboard.</p>
+      <ul class="steps-list">
+        <li>
+          <i class="fas fa-twitter" aria-hidden="true"></i>
+          <strong>Connect Your X (Twitter) Account:</strong> Manage DMs and mentions seamlessly.
+        </li>
+        <li>
+          <i class="fas fa-facebook" aria-hidden="true"></i>
+          <strong>Connect Your Facebook Page:</strong> Automate responses to comments and messages.
+        </li>
+        <li>
+          <i class="fas fa-instagram" aria-hidden="true"></i>
+          <strong>Automate Instagram DMs:</strong> Ensure timely replies to your Instagram audience.
+        </li>
+        <li>
+          <i class="fas fa-whatsapp" aria-hidden="true"></i>
+          <strong>Enable WhatsApp Automation:</strong> Utilize our API for streamlined WhatsApp interactions.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Step 2: Personalize Your Experience -->
+    <section class="step-section">
+      <h2>2. Personalize Your Experience</h2>
+      <p>Customize Breezy to reflect your brand's unique voice and operational preferences.</p>
+
+      <!-- Subsection: Set Your Brand Tone -->
+      <div class="subsection">
+        <h3>Set Your Brand Tone</h3>
+        <p>Select a tone that best reflects your brand personality.</p>
+        <label for="toneStyle">Tone Style:</label>
+        <textarea id="toneStyle" name="toneStyle" rows="3" placeholder='e.g., "Hey there! 😊 How can I assist you today?"'></textarea>
+      </div>
+
+      <!-- Subsection: Response Scheduling -->
+      <div class="subsection">
+        <h3>Response Scheduling</h3>
+        <p>Control when Breezy sends automated responses.</p>
+        <label>
+          <input type="checkbox" id="enableScheduling">
+          Turn On Responses Within Timeframe
+        </label>
+        <p>
+          Leave unchecked to keep auto responses active 24/7. Check to enable responses only within a specific time frame.
+        </p>
+      </div>
+
+      <!-- Subsection: Escalation to Human Support -->
+      <div class="subsection">
+        <h3>Escalation to Human Support</h3>
+        <p>Decide how to handle messages that require human attention.</p>
+        <label>
+          <input type="radio" name="escalation" value="aiDetection" checked>
+          Use AI Detection (Recommended)
+        </label>
+        <label>
+          <input type="radio" name="escalation" value="customKeywords">
+          Use Custom Keyword List
+        </label>
+      </div>
+
+      <!-- Subsection: AI Training -->
+      <div class="subsection">
+        <h3>AI Training</h3>
+        <p>Add common questions and their responses to enhance AI accuracy.</p>
+        <textarea id="aiTraining" name="aiTraining" rows="5" placeholder='e.g., Q: What are your business hours?\nA: We are open from 9 AM to 5 PM, Monday to Friday.'></textarea>
+      </div>
+    </section>
+
+    <!-- Step 3: Optimize Settings -->
+    <section class="step-section">
+      <h2>3. Optimize Your Settings</h2>
+      <p>Fine-tune Breezy's settings to align with your business goals and operational workflows.</p>
+      <ul class="steps-list">
+        <li>
+          <i class="fas fa-cogs" aria-hidden="true"></i>
+          <strong>Automate Response Scheduling:</strong> Set specific time frames or keep responses active 24/7.
+        </li>
+        <li>
+          <i class="fas fa-shield-alt" aria-hidden="true"></i>
+          <strong>Configure Security Protocols:</strong> Ensure your data is protected with advanced encryption and access controls.
+        </li>
+        <li>
+          <i class="fas fa-chart-line" aria-hidden="true"></i>
+          <strong>Set Up In-Depth Analytics:</strong> Monitor performance and optimize strategies based on comprehensive insights.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Step 4: Launch & Monitor -->
+    <section class="step-section">
+      <h2>4. Launch & Monitor</h2>
+      <p>Activate your automated responses and keep track of their performance.</p>
+      <ul class="steps-list">
+        <li>
+          <i class="fas fa-rocket" aria-hidden="true"></i>
+          <strong>Activate Automation:</strong> Launch your automated responses across all connected platforms.
+        </li>
+        <li>
+          <i class="fas fa-eye" aria-hidden="true"></i>
+          <strong>Monitor Performance:</strong> Use our analytics tools to track engagement and response effectiveness.
+        </li>
+        <li>
+          <i class="fas fa-tools" aria-hidden="true"></i>
+          <strong>Optimize Strategies:</strong> Adjust settings based on analytics to continuously improve customer interactions.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Additional Tips -->
+    <section class="tips-section">
+      <h2>Additional Tips for Maximizing Breezy</h2>
+      <ul class="tips-list">
+        <li>
+          <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          <strong>Regularly Update AI Responses:</strong> Keep your AI responses relevant and up-to-date with current trends and customer needs.
+        </li>
+        <li>
+          <i class="fas fa-users" aria-hidden="true"></i>
+          <strong>Train Your Team:</strong> Ensure your team understands how to use Breezy effectively to maximize its benefits.
+        </li>
+        <li>
+          <i class="fas fa-sync-alt" aria-hidden="true"></i>
+          <strong>Integrate with Other Tools:</strong> Connect Breezy with your CRM, email marketing, and other tools for a seamless workflow.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <h2>Ready to Automate Your Social Media Responses?</h2>
+        <p>
+          Start configuring Breezy today and transform your social media strategy. Enjoy <strong>50 free responses</strong> on us! Experience enhanced customer engagement, increased sales, and significant time savings with our user-friendly platform.
+        </p>
+        <div class="cta-buttons">
+          <a href="../signup.html" class="cta-large" role="button">Get Started for Free</a>
+          <a href="../dashboard.html" class="cta-outline" role="button" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-info-circle" aria-hidden="true"></i> View Demo
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content container">
+      <p>&copy; 2025 Breezy. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://facebook.com/breezyai" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/breezyai" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/breezyai" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com/company/breezyai" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Interactive Elements -->
+  <script>
+    // Mobile Navigation Toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+        menuToggle.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

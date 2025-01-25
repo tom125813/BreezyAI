@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Breezy - Help Center">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center - Breezy</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+  <!-- Google Font: Open Sans (400 & 500) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+  <!-- Help-Specific Styles -->
+  <link rel="stylesheet" href="css/help.css" />
+</head>
+<body>
+  <!-- Sidebar Component -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- Hamburger Menu (Visible on Mobile) -->
+  <div class="hamburger">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar Component -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Help Section -->
+    <section id="helpSection" class="help-section">
+      <h2 class="help-title"><i class="fas fa-headset"></i> Help Center</h2>
+      <p class="help-description">Find answers to common questions or get in touch with our support team.</p>
+
+      <!-- Search Bar -->
+      <div class="help-search">
+        <input type="text" id="helpSearch" placeholder="Search for help articles..." />
+        <button id="helpSearchBtn"><i class="fas fa-search"></i></button>
+      </div>
+
+      <!-- Help Topics -->
+      <div class="help-topics">
+        <div class="help-card">
+          <h3><i class="fas fa-cogs"></i> Getting Started</h3>
+          <p>Learn the basics of how to set up and use Breezy effectively.</p>
+          <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="help-card">
+          <h3><i class="fas fa-question-circle"></i> FAQs</h3>
+          <p>Answers to the most commonly asked questions about Breezy.</p>
+          <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="help-card">
+          <h3><i class="fas fa-user-shield"></i> Account Security</h3>
+          <p>Tips and best practices to keep your account safe.</p>
+          <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="help-card">
+          <h3><i class="fas fa-handshake"></i> Contact Support</h3>
+          <p>Need help? Get in touch with our support team.</p>
+          <a href="#">Contact Us <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="help-faq">
+        <h3><i class="fas fa-lightbulb"></i> Frequently Asked Questions</h3>
+        <div class="faq-item">
+          <button class="faq-question">
+            How do I reset my password? <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Go to your account settings and click on 'Change Password' to reset your password.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What payment methods do you accept? <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We accept major credit cards, PayPal, and other online payment options.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Scripts -->
+  <script src="js/base.js"></script>
+  <!-- Help-Specific Scripts -->
+  <script src="js/help.js"></script>
+</body>
+</html>

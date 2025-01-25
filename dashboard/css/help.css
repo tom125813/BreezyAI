@@ -1,0 +1,142 @@
+/* -------------------------
+   HELP SECTION STYLES
+------------------------- */
+
+/* Help Section */
+.help-section {
+  /* Remove padding and background as handled in base.css */
+}
+
+.help-title {
+  font-size:  1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.help-description {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* Search Bar */
+.help-search {
+  display: flex;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.help-search input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  font-size: 1rem;
+  outline: none;
+}
+
+.help-search button {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  font-size: 1rem;
+  transition: background var(--transition-speed);
+}
+
+.help-search button:hover {
+  background: #003ecc;
+}
+
+/* Help Topics */
+.help-topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.help-card {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.help-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.help-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.help-card p {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.help-card a {
+  font-size: 1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.help-card a:hover {
+  text-decoration: underline;
+}
+
+/* FAQ Section */
+.help-faq h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq-answer {
+  display: none;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .help-title {
+    text-align: center;
+  }
+
+  .help-topics {
+    grid-template-columns: 1fr;
+  }
+}

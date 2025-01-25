@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Breezy - Account Settings">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings - Breezy</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+  <!-- Google Font: Open Sans (400 & 500) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome for Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+  <!-- Account-Specific Styles -->
+  <link rel="stylesheet" href="css/account.css" />
+</head>
+<body>
+  <!-- Sidebar Component -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- Hamburger Menu (Visible on Mobile) -->
+  <div class="hamburger">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar Component -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Account Settings Section -->
+    <section id="accountSection" class="account-section">
+      <h2 class="account-title"><i class="fas fa-user-cog"></i> Account Settings</h2>
+      <p class="account-description">
+        Manage your Breezy account details, update your information, and oversee your team of agents. Ensure your settings align with your business needs to maximize your performance.
+      </p>
+      <hr class="divider">
+
+      <!-- Profile Information and Agents Management Grid -->
+      <div class="account-grid">
+        <!-- Profile Information Card -->
+        <div class="account-card">
+          <h3 class="account-card-title"><i class="fas fa-user-cog"></i> Profile Information</h3>
+          <form id="profileForm" class="account-form">
+            <div class="form-group">
+              <label for="fullName"><i class="fas fa-signature"></i> Full Name</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="emailAddress"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="businessType"><i class="fas fa-briefcase"></i> Business Type</label>
+              <select id="businessType" name="businessType" required>
+                <option value="">Select your business type</option>
+                <option value="consulting">Consulting</option>
+                <option value="ecommerce">E-commerce</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="education">Education</option>
+                <option value="technology">Technology</option>
+                <option value="finance">Finance</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="marketing">Marketing</option>
+                <option value="real_estate">Real Estate</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="timezone"><i class="fas fa-clock"></i> Timezone</label>
+              <select id="timezone" name="timezone" required>
+                <option value="">Select your timezone</option>
+                <option value="Pacific/Midway">(GMT-11:00) Midway Island</option>
+                <option value="Pacific/Honolulu">(GMT-10:00) Hawaii</option>
+                <option value="America/Anchorage">(GMT-09:00) Alaska</option>
+                <option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US & Canada)</option>
+                <option value="America/Denver">(GMT-07:00) Mountain Time (US & Canada)</option>
+                <option value="America/Chicago">(GMT-06:00) Central Time (US & Canada)</option>
+                <option value="America/New_York">(GMT-05:00) Eastern Time (US & Canada)</option>
+                <option value="Europe/London">(GMT+00:00) London</option>
+                <option value="Europe/Berlin">(GMT+01:00) Berlin</option>
+                <option value="Asia/Dubai">(GMT+04:00) Dubai</option>
+                <option value="Asia/Kolkata">(GMT+05:30) Kolkata</option>
+                <option value="Asia/Tokyo">(GMT+09:00) Tokyo</option>
+                <option value="Australia/Sydney">(GMT+10:00) Sydney</option>
+                <option value="Pacific/Auckland">(GMT+12:00) Auckland</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group toggle-group">
+              <label for="emailNotifications"><i class="fas fa-envelope-open-text"></i> Email Notifications</label>
+              <label class="switch">
+                <input type="checkbox" id="emailNotifications" name="emailNotifications" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="form-group toggle-group">
+              <label for="smsNotifications"><i class="fas fa-sms"></i> SMS Notifications</label>
+              <label class="switch">
+                <input type="checkbox" id="smsNotifications" name="smsNotifications">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <!--<div class="form-group">
+              <label for="currentPassword"><i class="fas fa-lock"></i> Current Password</label>
+              <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter current password">
+            </div>
+            <div class="form-group">
+              <label for="newPassword"><i class="fas fa-lock"></i> New Password</label>
+              <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password">
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword"><i class="fas fa-lock"></i> Confirm New Password</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter new password">
+            </div>-->
+            <div class="form-actions">
+              <button type="submit" class="save-button"><i class="fas fa-save"></i> Save Changes</button>
+              <button type="button" class="delete-button" id="deleteAccountButton">
+                <i class="fas fa-trash-alt"></i> Delete Account
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Agents Management Card -->
+        <div class="account-card">
+          <h3 class="account-card-title"><i class="fas fa-users-cog"></i> Manage Agents</h3>
+          <div class="agents-management">
+            <div class="agents-header">
+              <span class="agents-count" id="agentsCount">2/5 - Upgrade your plan to have a higher limit.</span>
+            </div>
+            <ul class="agents-list" id="agentsList">
+              <!-- Placeholder Agent 1 -->
+              <li class="agent-item">
+                <div class="agent-info">
+                  <span class="agent-name">John Doe</span>
+                  <span class="agent-email">john.doe@example.com</span>
+                </div>
+                <button class="remove-agent-button" title="Remove Agent"><i class="fas fa-times"></i></button>
+              </li>
+              <!-- Placeholder Agent 2 -->
+              <li class="agent-item">
+                <div class="agent-info">
+                  <span class="agent-name">Jane Smith</span>
+                  <span class="agent-email">jane.smith@example.com</span>
+                </div>
+                <button class="remove-agent-button" title="Remove Agent"><i class="fas fa-times"></i></button>
+              </li>
+              <!-- Placeholder Agents for Demo -->
+              <li class="agent-item placeholder-agent">
+                <div class="agent-info">
+                  <span class="agent-name">Add Another Agent</span>
+                  <span class="agent-email">agent@example.com</span>
+                </div>
+                <!-- No remove button for placeholders -->
+              </li>
+              <li class="agent-item placeholder-agent">
+                <div class="agent-info">
+                  <span class="agent-name">Add Another Agent</span>
+                  <span class="agent-email">agent@example.com</span>
+                </div>
+              </li>
+              <li class="agent-item placeholder-agent">
+                <div class="agent-info">
+                  <span class="agent-name">Add Another Agent</span>
+                  <span class="agent-email">agent@example.com</span>
+                </div>
+              </li>
+            </ul>
+            <button class="add-agent-button" id="addAgentButton"><i class="fas fa-plus"></i> Add Agent</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Scripts -->
+  <script src="js/base.js"></script>
+  <!-- Account-Specific Scripts -->
+  <script src="js/account.js"></script>
+</body>
+</html>

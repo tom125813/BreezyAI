@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Breezy - Feedback">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - Breezy</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+  <!-- Google Font: Open Sans (400 & 500) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+  <!-- Feedback-Specific Styles -->
+  <link rel="stylesheet" href="css/feedback.css" />
+</head>
+<body>
+  <!-- Sidebar Component -->
+  <div id="sidebar-placeholder"></div>
+
+  <!-- Hamburger Menu (Visible on Mobile) -->
+  <div class="hamburger">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <!-- Topbar Component -->
+    <div id="topbar-placeholder"></div>
+
+    <!-- Feedback Section -->
+    <section id="feedbackSection" class="feedback-section">
+      <h2 class="feedback-title"><i class="fas fa-comment-dots"></i> We Value Your Feedback</h2>
+      <p class="feedback-description">Share your experience with Breezy and help us improve our services.</p>
+      <hr class="divider">
+
+      <!-- Feedback Form -->
+      <div class="feedback-card">
+        <h3 class="feedback-card-title"><i class="fas fa-comment-alt"></i> Submit Your Feedback</h3>
+        <form id="feedbackForm" class="feedback-form">
+          <div class="form-group">
+            <label for="feedbackType"><i class="fas fa-list"></i> Feedback Type</label>
+            <select id="feedbackType" name="feedbackType" required>
+              <option value="">Select a category</option>
+              <option value="feature">Feature Request</option>
+              <option value="bug">Report a Bug</option>
+              <option value="general">General Feedback</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="feedbackMessage"><i class="fas fa-pencil-alt"></i> Your Message</label>
+            <textarea id="feedbackMessage" name="feedbackMessage" rows="5" placeholder="Describe your experience" required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="submit-button"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Submitted Feedback -->
+      <div class="feedback-card">
+        <h3 class="feedback-card-title"><i class="fas fa-history"></i> Your Submitted Feedback</h3>
+        <ul class="feedback-list">
+          <li class="feedback-item">
+            <span class="feedback-category"><i class="fas fa-check-circle"></i> Feature Request</span>
+            <p class="feedback-text">I would love to see a dark mode option.</p>
+          </li>
+          <li class="feedback-item">
+            <span class="feedback-category"><i class="fas fa-bug"></i> Report a Bug</span>
+            <p class="feedback-text">The dashboard sometimes takes too long to load.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="feedback-card">
+        <h3 class="feedback-card-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+        <div class="faq-item">
+          <button class="faq-question">
+            How long does it take to get a response?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We typically respond to feedback within 2-3 business days.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I edit my feedback after submitting?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Currently, you cannot edit submitted feedback. However, you can submit a new one with corrections.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Scripts -->
+  <script src="js/base.js"></script>
+  <!-- Feedback-Specific Scripts -->
+  <script src="js/feedback.js"></script>
+</body>
+</html>
