@@ -1,0 +1,6 @@
+breezy:
+- enable/disable switch somewhere in configuration
+- in dashboard can see if its enabled or not
+
+
+cd /d "E:\Breezy\dashboard" && python -m http.server 8000

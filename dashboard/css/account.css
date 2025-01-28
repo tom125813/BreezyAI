@@ -1,0 +1,368 @@
+/* -------------------------
+   ACCOUNT SECTION STYLES
+------------------------- */
+
+/* Account Section */
+.account-section {
+  /* Removed padding and background-color as handled in base.css */
+}
+
+/* Account Title */
+.account-title {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.account-description {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* Account Grid */
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Account Card */
+.account-card {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Account Card Title */
+.account-card-title {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Account Form */
+.account-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color var(--transition-speed);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Toggle Switch */
+.toggle-group {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: background-color var(--transition-speed);
+  border-radius: 24px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: transform var(--transition-speed);
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Save Button */
+.save-button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.save-button:hover {
+  background-color: #003ecc;
+  transform: translateY(-2px);
+}
+
+.save-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Delete Account Button */
+.delete-button {
+  background-color: #ff4d4d;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+.delete-button:focus {
+  outline: 2px solid #cc0000;
+  outline-offset: 2px;
+}
+
+/* Agents Management */
+.agents-management {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.agents-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.agents-count {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.add-agent-button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  border: none;
+}
+
+.add-agent-button:hover {
+  background-color: #003ecc;
+  transform: translateY(-2px);
+}
+
+.add-agent-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Agents List */
+.agents-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.agent-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
+  transition: background-color var(--transition-speed);
+}
+
+.agent-item:hover {
+  background-color: #f0f0f0;
+}
+
+.agent-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.agent-name {
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.agent-email {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.remove-agent-button {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color var(--transition-speed);
+}
+
+.remove-agent-button:hover {
+  color: #cc0000;
+}
+
+.remove-agent-button:focus {
+  outline: none;
+}
+
+/* Placeholder Agent Styling */
+.placeholder-agent {
+  background-color: #e6e6e6;
+  color: #999999;
+}
+
+.placeholder-agent .agent-name {
+  font-style: italic;
+}
+
+.placeholder-agent .remove-agent-button {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .account-title {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .account-description {
+    text-align: center;
+  }
+
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-card {
+    padding: 1rem;
+  }
+
+  .agents-header {
+    flex-direction: column;
+    align-items: left;
+    gap: 10px;
+  }
+
+  .add-agent-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .agents-list {
+    padding: 0;
+  }
+
+  .agent-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .agents-count {
+    text-align: left;
+  }
+}

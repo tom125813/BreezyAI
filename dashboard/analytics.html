@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Breezy - Analytics Dashboard">
+  <title>Analytics Dashboard - Breezy</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.ico">
+  <!-- Google Font: Open Sans (400 & 500) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/analytics.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <!-- Hamburger Menu (Visible on Mobile) -->
+  <div class="hamburger">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+  </div>
+
+  <main class="dashboard-main">
+    <div id="topbar-placeholder"></div>
+    <section id="analyticsSection" class="analytics-section">
+      <h2 class="analytics-title"><i class="fas fa-chart-line"></i> Analytics Dashboard</h2>
+      <p class="analytics-description">Gain valuable insights into your AI-driven interactions.</p>
+      <hr class="divider">
+
+      <!-- Overview Metrics -->
+      <div class="analytics-overview">
+        <div class="analytics-card">
+          <h3><i class="fas fa-users"></i> Total Users</h3>
+          <p class="analytics-value">12,345</p>
+        </div>
+        <div class="analytics-card">
+          <h3><i class="fas fa-robot"></i> AI Responses</h3>
+          <p class="analytics-value">38,789</p>
+        </div>
+        <div class="analytics-card">
+          <h3><i class="fas fa-user-clock"></i> Human Interventions</h3>
+          <p class="analytics-value">1,456</p>
+        </div>
+        <div class="analytics-card">
+          <h3><i class="fas fa-check-circle"></i> Success Rate</h3>
+          <p class="analytics-value positive">92%</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Charts Section -->
+      <div class="analytics-charts">
+        <div class="chart-container">
+          <h3><i class="fas fa-comment-dots"></i> Messages Over Time</h3>
+          <canvas id="messagesChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h3><i class="fas fa-exchange-alt"></i> AI vs Human Responses</h3>
+          <canvas id="aiHumanChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h3><i class="fas fa-stopwatch"></i> Response Time Breakdown</h3>
+          <canvas id="responseTimeChart"></canvas>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Performance Breakdown -->
+      <div class="analytics-performance">
+        <h3><i class="fas fa-chart-bar"></i> Performance Breakdown</h3>
+        <table class="analytics-table">
+          <thead>
+            <tr>
+              <th><i class="fas fa-chart-pie"></i> Metric</th>
+              <th><i class="fas fa-calendar-week"></i> This Week</th>
+              <th><i class="fas fa-calendar-alt"></i> Last Week</th>
+              <th><i class="fas fa-arrow-up"></i> Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fas fa-user-plus"></i> New Users</td>
+              <td>1,234</td>
+              <td>1,100</td>
+              <td class="positive"><i class="fas fa-arrow-up"></i> +12%</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-comment"></i> AI Responses</td>
+              <td>10,200</td>
+              <td>9,500</td>
+              <td class="positive"><i class="fas fa-arrow-up"></i> +7.4%</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-user-clock"></i> Human Interventions</td>
+              <td>123</td>
+              <td>150</td>
+              <td class="negative"><i class="fas fa-arrow-down"></i> -18%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/base.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

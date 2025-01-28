@@ -8,16 +8,37 @@ if (menuToggle) {
   });
 }
 
-// Handle login
+// Handle Google OAuth login
+const googleLoginBtn = document.getElementById('google-login-btn');
+if (googleLoginBtn) {
+  googleLoginBtn.addEventListener('click', () => {
+    window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+  });
+}
+
+// Handle login form submission (normal email/password)
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
   loginForm.addEventListener('submit', e => {
     e.preventDefault();
-    // Real app: Validate credentials, get token, etc.
-    localStorage.setItem('isLoggedIn', 'true');
-    window.location.href = 'dashboard.html';
+    const email = loginForm.querySelector('input[type="email"]').value;
+    const password = loginForm.querySelector('input[type="password"]').value;
+
+    // Simulate login process (replace with server authentication call)
+    if (email && password) {
+      localStorage.setItem('isLoggedIn', 'true');
+      window.location.href = 'dashboard.html';
+    } else {
+      alert('Invalid email or password');
+    }
   });
 }
+
+// Redirect to dashboard if already logged in
+if (localStorage.getItem('isLoggedIn') === 'true') {
+  window.location.href = 'dashboard.html';
+}
+
 
 // Handle signup
 const signupForm = document.getElementById('signupForm');
@@ -31,10 +52,10 @@ if (signupForm) {
 }
 
 // If user is logged in, show dashboard link
-if (localStorage.getItem('isLoggedIn') === 'true') {
+/*if (localStorage.getItem('isLoggedIn') === 'true') {
   const dashLink = document.querySelector('.dashboard-link');
   if (dashLink) dashLink.style.display = 'inline-block';
-}
+}*/
 
 // Toggle overlays on button click
 const notificationsBtn = document.querySelector('.notifications-btn');

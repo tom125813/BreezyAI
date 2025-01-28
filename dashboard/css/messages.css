@@ -1,0 +1,264 @@
+/* --------------------
+   MESSAGES SECTION STYLES
+-------------------- */
+
+/* Ensure this CSS is loaded after base.css */
+
+/* Container for Messages Section */
+#messagesSection {
+  /* No additional padding; relies on base.css */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Section Headings */
+#messagesSection h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem; /* Reduced size for a sleeker look */
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: left;
+
+}
+
+/* Description Paragraph */
+#messagesSection p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Divider */
+#messagesSection .divider {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 1.5rem 0;
+}
+
+/* Interactive Filters */
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 0.8rem;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.filter-btn:hover {
+  background: var(--primary-color);
+  color: var(--bg-white);
+  transform: translateY(-1px);
+}
+
+.filter-btn.active {
+  background: var(--primary-color);
+  color: var(--bg-white);
+}
+
+/* Message Categories */
+.message-category {
+  margin-bottom: 2rem;
+}
+
+.message-category h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.3rem;
+}
+
+.message-category h3::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background: var(--primary-color);
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
+}
+
+/* Message Threads */
+.message-thread {
+  display: flex;
+  align-items: center;
+  background: var(--bg-white);
+  padding: 1rem 1rem;
+  border-radius: var(--border-radius);
+  border-left: 4px solid transparent;
+  margin-bottom: 0.8rem;
+  transition: var(--transition-speed); /* Ensure transition properties are defined */
+  cursor: pointer;
+  transform: translateY(0px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.message-thread:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-left-color: var(--primary-color);
+  transform: translateY(-3px); /* Reduced movement */
+}
+/* Platform Icons */
+.platform-icon {
+  font-size: 1.6rem;
+  margin-right: 1rem;
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+
+/* Thread Information */
+.thread-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.user-handle {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.summary {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timestamp {
+  color: var(--text-light);
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+/* Status Labels */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Status Variants */
+.status.action-needed {
+  background: var(--bg-white)3cd;
+  color: #856404;
+}
+
+.status.resolved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.pending {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.status.generating {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Chevron Icon */
+.view-thread {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  transition: color var(--transition-speed), transform var(--transition-speed);
+  margin-left: 0.5rem;
+}
+
+.message-thread:hover .view-thread {
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .filters {
+    justify-content: center;
+  }
+
+  .message-thread {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .platform-icon {
+    margin-bottom: 0.5rem;
+  }
+
+  .status {
+    margin-top: 0.3rem;
+  }
+
+  .summary {
+    max-width: 100%;
+    white-space: normal;
+    font-size: 0.85rem;
+  }
+
+  .view-thread {
+    align-self: flex-end;
+    margin-top: 0.3rem;
+  }
+}
+
+/* Accessibility: Focus States */
+.message-thread:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+}
+
+.filter-btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Optional: Animations for Message Appearance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.message-thread:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+
+.message-thread:nth-child(even) {
+  animation-delay: 0.15s;
+}
