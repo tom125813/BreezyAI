@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Breezy - Dashboard" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Breezy</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap"
+  rel="stylesheet"
+  />
+  <!-- Font Awesome -->
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <!-- Chart.js (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Check login with JS, if not logged in => redirect (see script) -->
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html" class="no-decoration">
+        <img src="images/textlogo.png" alt="Breezy Logo" class="logo-image">
+      </a>
+    </div>
+    <p style="font-style: italic; color: darkgray; margin-left:5px; ">Demo Version</p>
+
+    <!-- Top section -->
+    <ul class="sidebar-links top-links">
+      <li class="sidebar-item active" data-target="dashboardSection">
+        <i class="fa-solid fa-table-columns"></i> Dashboard
+      </li>
+      <li class="sidebar-item" data-target="messagesSection">
+        <i class="fa-solid fa-message"></i> Messages
+      </li>
+      <li class="sidebar-item" data-target="analyticsSection">
+        <i class="fas fa-chart-line"></i> Analytics
+      </li>
+      <li class="sidebar-item" data-target="configurationSection">
+        <i class="fas fa-cog"></i> Configuration
+      </li>
+      <!--<li class="sidebar-item" data-target="connectionsSection">
+      <i class="fa-solid fa-link"></i> Connections
+    </li>-->
+  </ul>
+
+  <!-- Bottom section -->
+  <ul class="sidebar-links bottom-links">
+    <li class="sidebar-item" data-target="accountSection">
+      <i class="fas fa-user"></i> Account Settings
+    </li>
+    <li class="sidebar-item" data-target="purchaseSection">
+      <i class="fas fa-coins"></i> Purchase Credits
+    </li>
+    <li class="sidebar-item" data-target="helpSection">
+      <i class="fas fa-question-circle"></i> Help Center
+    </li>
+    <li class="sidebar-item" data-target="feedbackSection">
+      <i class="fas fa-comment"></i> Give Feedback
+    </li>
+  </ul>
+
+  <!-- Logout button at the bottom -->
+  <button class="logout-btn" id="logoutBtn">
+    <i class="fas fa-sign-out-alt"></i> Logout
+  </button>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="dashboard-main">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <!--<div class="nav-icons">
+    <button class="notifications-btn">
+    <i class="fas fa-bell"></i>
+    <span class="badge">1</span>
+  </button>
+  <button class="messages-btn">
+  <i class="fas fa-envelope"></i>
+  <span class="badge">2</span>
+</button>
+</div>-->
+<!--<div class="credit-balance" id="creditBalance">-->
+<div class="credit-balance" data-target="purchaseSection">
+  <i class="fas fa-coins"></i> 50
+</div>
+</div>
+
+
+<div class="notifications-overlay" id="notificationsOverlay">
+  <h3>Notifications</h3>
+  <ul>
+    <li>Human intervention needed for conversation #123</li>
+    <li>New update: Brand tone saved successfully</li>
+  </ul>
+</div>
+
+<div class="messages-overlay" id="messagesOverlay">
+  <h3>Recent Messages</h3>
+  <ul>
+    <li>
+      <strong>User:</strong> John Doe (Facebook)
+      <br />
+      <strong>Status:</strong> AI responded, awaiting user reply
+      <br />
+      <button>View Thread</button>
+    </li>
+    <!-- more messages ... -->
+  </ul>
+</div>
+
+<section id="dashboardSection" class="dashboard-section active-section">
+  <!-- Welcome Banner -->
+  <div class="welcome-banner">
+    <h2>Welcome back, Tom!</h2>
+    <p>Here's a quick overview of your account.</p>
+  </div>
+
+  <br>
+  <hr class="divider"><br>
+
+  <!-- Quick Stats -->
+  <div class="quick-stats">
+    <div class="stat-card">
+      <i class="fas fa-message"></i>
+      <div class="stat-info">
+        <h3>150</h3>
+        <p>Total Messages</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-coins"></i>
+      <div class="stat-info">
+        <h3>50</h3>
+        <p>Credits Remaining</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-link"></i>
+      <div class="stat-info">
+        <h3>4</h3>
+        <p>Connected Accounts</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-user-cog"></i>
+      <div class="stat-info">
+        <h3>3</h3>
+        <p>Pending Actions</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <i class="fas fa-bell"></i>
+      <div class="stat-info">
+        <h3>5</h3>
+        <p>Notifications</p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <hr class="divider"><br>
+
+  <!-- Combined Activities and Notifications Section -->
+  <div class="activities-notifications-section">
+    <!-- Recent Activities -->
+    <div class="recent-activities">
+      <h3>Recent Activities</h3>
+      <ul>
+        <li>
+          <i class="fas fa-check-circle activity-icon success"></i>
+          <span>Your X account was successfully connected.</span>
+          <span class="activity-time">2 hours ago</span>
+        </li>
+        <li>
+          <i class="fas fa-exclamation-circle activity-icon warning"></i>
+          <span>Credit balance is low. Consider purchasing more credits.</span>
+          <span class="activity-time">1 day ago</span>
+        </li>
+        <li>
+          <i class="fas fa-envelope activity-icon info"></i>
+          <span>New message from @happyuser.</span>
+          <span class="activity-time">3 days ago</span>
+        </li>
+        <!-- Add more activities as needed -->
+      </ul>
+    </div>
+
+    <!-- Upcoming Tasks -->
+    <div class="upcoming-tasks">
+      <h3>Upcoming Tasks</h3>
+      <ul>
+        <li>
+          <i class="fas fa-calendar-check activity-icon"></i>
+          <span>Review and respond to pending messages.</span>
+          <span class="activity-time">Tomorrow</span>
+        </li>
+        <li>
+          <i class="fas fa-credit-card activity-icon"></i>
+          <span>Auto-purchase credits set for next week.</span>
+          <span class="activity-time">Next Monday</span>
+        </li>
+        <!-- Add more tasks as needed -->
+      </ul>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications">
+      <h3>Notifications</h3>
+      <ul>
+        <li>You have a new message from @user456.</li>
+        <li>Your profile was updated successfully.</li>
+        <!-- More notifications -->
+      </ul>
+    </div>
+
+    <!-- Announcements -->
+    <div class="announcements">
+      <h3>Announcements</h3>
+      <ul>
+        <li>New feature: Scheduled Responses are now available!</li>
+        <li>Maintenance scheduled for next Saturday.</li>
+        <!-- More announcements -->
+      </ul>
+    </div>
+  </div>
+
+  <br>
+  <hr class="divider"><br>
+
+  <!-- Optional: Additional Useful Sections -->
+  <!-- Example: Recent Purchases, Support Tickets, etc. -->
+  <div class="additional-sections">
+    <!-- Recent Purchases -->
+    <div class="recent-purchases">
+      <h3>Recent Purchases</h3>
+      <ul>
+        <li>
+          <span>Purchased 5,000 Credits</span>
+          <span class="purchase-time">$44.99 - 1 week ago</span>
+        </li>
+        <li>
+          <span>Purchased 1,000 Credits</span>
+          <span class="purchase-time">$9.99 - 2 weeks ago</span>
+        </li>
+        <!-- Add more purchases as needed -->
+      </ul>
+    </div>
+
+    <!-- Support Tickets -->
+    <div class="support-tickets">
+      <h3>Support Tickets</h3>
+      <ul>
+        <li>
+          <span>Issue with Facebook Integration</span>
+          <span class="ticket-status">Open</span>
+        </li>
+        <li>
+          <span>Billing Inquiry</span>
+          <span class="ticket-status">Resolved</span>
+        </li>
+        <!-- Add more tickets as needed -->
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ANALYTICS SECTION -->
+<!-- ANALYTICS SECTION -->
+<!-- ANALYTICS SECTION -->
+<!-- ANALYTICS SECTION -->
+<section id="analyticsSection" class="dashboard-section">
+
+  <!-- Section Header -->
+  <div class="analytics-header">
+    <h2>Analytics</h2>
+    <p>Monitor key performance metrics to optimize your AI response system.</p>
+    <hr class="divider">
+  </div>
+
+  <!-- Important Info Boxes -->
+  <div class="analytics-info-boxes">
+    <!-- Total Responses -->
+    <div class="info-box">
+      <i class="fas fa-comments"></i>
+      <div class="info-details">
+        <h3>150</h3>
+        <p>Total Responses</p>
+      </div>
+    </div>
+
+    <!-- Credits Used -->
+    <div class="info-box">
+      <i class="fas fa-coins"></i>
+      <div class="info-details">
+        <h3>50</h3>
+        <p>Credits Used</p>
+      </div>
+    </div>
+
+    <!-- Average Response Time -->
+    <div class="info-box">
+      <i class="fas fa-clock"></i>
+      <div class="info-details">
+        <h3>2.5s</h3>
+        <p>Avg. Response Time</p>
+      </div>
+    </div>
+
+    <!-- Engagement Rate -->
+    <div class="info-box">
+      <i class="fas fa-chart-line"></i>
+      <div class="info-details">
+        <h3>75%</h3>
+        <p>Engagement Rate</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analytics Charts Container -->
+  <div class="analytics-charts-container">
+
+    <!-- Total Responses Chart -->
+    <div class="chart-card">
+      <div class="chart-summary up">
+        <i class="fas fa-comments"></i>
+        <span>Total Responses</span>
+        <button class="view-more-btn">
+          <i class="fas fa-eye"></i> View More
+        </button>
+      </div>
+      <canvas id="totalResponsesChart"></canvas>
+    </div>
+
+    <!-- Human Intervention Required Chart -->
+    <div class="chart-card">
+      <div class="chart-summary down">
+        <i class="fas fa-user-cog"></i>
+        <span>Human Intervention Needed</span>
+        <button class="view-more-btn">
+          <i class="fas fa-eye"></i> View More
+        </button>
+      </div>
+      <canvas id="humanInterventionChart"></canvas>
+    </div>
+
+    <!-- Credit Usage Chart -->
+    <div class="chart-card">
+      <div class="chart-summary up">
+        <i class="fas fa-coins"></i>
+        <span>Credit Usage</span>
+        <button class="view-more-btn">
+          <i class="fas fa-eye"></i> View More
+        </button>
+      </div>
+      <canvas id="creditsUsageChart"></canvas>
+    </div>
+
+    <!-- Average Response Time Chart -->
+    <div class="chart-card">
+      <div class="chart-summary up">
+        <i class="fas fa-clock"></i>
+        <span>Average Response Time</span>
+        <button class="view-more-btn">
+          <i class="fas fa-eye"></i> View More
+        </button>
+      </div>
+      <canvas id="responseTimeChart"></canvas>
+    </div>
+
+    <!-- Engagement Rate Chart -->
+    <div class="chart-card">
+      <div class="chart-summary up">
+        <i class="fas fa-chart-pie"></i>
+        <span>Engagement Rate</span>
+        <button class="view-more-btn">
+          <i class="fas fa-eye"></i> View More
+        </button>
+      </div>
+      <canvas id="engagementRateChart"></canvas>
+    </div>
+
+    <!-- Channel Breakdown Chart -->
+    <div class="chart-card">
+      <div class="chart-summary down">
+        <i class="fas fa-network-wired"></i>
+        <span>Channel Breakdown</span>
+        <button class="view-more-btn">
+          <i class="fas fa-eye"></i> View More
+        </button>
+      </div>
+      <canvas id="channelBreakdownChart"></canvas>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="messagesSection" class="dashboard-section">
+  <h2>Message Management</h2>
+  <p>
+    Stay on top of customer interactions with real-time updates and easy message management.
+    <br>
+    Track, respond, and organize conversations efficiently to enhance your customer experience.
+  </p><br>
+  <div class="divider"></div>
+  <br>
+
+  <!-- Interactive Filters -->
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="action-needed">Action Needed</button>
+    <button class="filter-btn" data-filter="resolved">Resolved</button>
+    <button class="filter-btn" data-filter="pending">Pending Reply</button>
+    <button class="filter-btn" data-filter="generating">Generating Response</button>
+  </div>
+
+  <br>
+
+  <!-- Message Categories -->
+  <div class="message-category action-needed">
+    <h3>Requires Human Attention (3)</h3>
+    <div class="message-thread action-needed" tabindex="0" data-target="threadSection">
+      <i class="fab fa-twitter platform-icon"></i>
+      <div class="thread-info">
+        <p class="user-handle">@user123</p>
+        <p class="summary">Issue with delayed order delivery...</p>
+        <p class="timestamp">2 hours ago</p>
+      </div>
+      <span class="status action-needed">
+        <i class="fas fa-exclamation-circle"></i> Action Needed
+      </span>
+      <i class="fas fa-chevron-right view-thread"></i>
+    </div>
+
+    <div class="message-thread action-needed" tabindex="0">
+      <i class="fab fa-facebook-f platform-icon"></i>
+      <div class="thread-info">
+        <p class="user-handle">JohnDoe</p>
+        <p class="summary">Payment failed multiple times...</p>
+        <p class="timestamp">1 day ago</p>
+      </div>
+      <span class="status action-needed">
+        <i class="fas fa-exclamation-circle"></i> Action Needed
+      </span>
+      <i class="fas fa-chevron-right view-thread"></i>
+    </div>
+
+    <div class="message-thread action-needed" tabindex="0">
+      <i class="fab fa-instagram platform-icon"></i>
+      <div class="thread-info">
+        <p class="user-handle">@instafit</p>
+        <p class="summary">Request for product exchange...</p>
+        <p class="timestamp">3 days ago</p>
+      </div>
+      <span class="status action-needed">
+        <i class="fas fa-exclamation-circle"></i> Action Needed
+      </span>
+      <i class="fas fa-chevron-right view-thread"></i>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- AI-Handled Conversations -->
+  <div class="message-category ai-handled">
+    <h3>AI-Handled Conversations (4)</h3>
+    <div class="message-thread resolved" tabindex="0">
+      <i class="fab fa-twitter platform-icon"></i>
+      <div class="thread-info">
+        <p class="user-handle">@happyuser</p>
+        <p class="summary">Thanking for the excellent service...</p>
+        <p class="timestamp">5 hours ago</p>
+      </div>
+      <span class="status resolved">
+        <i class="fas fa-check-circle"></i> Resolved
+      </span>
+      <i class="fas fa-chevron-right view-thread"></i>
+    </div>
+
+    <div class="message-thread pending" tabindex="0">
+      <i class="fab fa-facebook-f platform-icon"></i>
+      <div class="thread-info">
+        <p class="user-handle">JaneSmith</p>
+        <p class="summary">Checking the availability of an item...</p>
+        <p class="timestamp">Yesterday</p>
+      </div>
+      <span class="status pending">
+        <i class="fas fa-clock"></i> Pending Reply
+      </span>
+      <i class="fas fa-chevron-right view-thread"></i>
+    </div>
+
+    <div class="message-thread generating" tabindex="0">
+      <i class="fab fa-instagram platform-icon"></i>
+      <div class="thread-info">
+        <p class="user-handle">@instashop</p>
+        <p class="summary">Inquiry about shipping times...</p>
+        <p class="timestamp">30 minutes ago</p>
+      </div>
+      <span class="status generating">
+        <i class="fas fa-sync-alt"></i> Generating Response
+      </span>
+      <i class="fas fa-chevron-right view-thread"></i>
+    </div>
+
+    <div class="message-thread generating" tabindex="0">
+      <i class="fab fa-twitter platform-icon"></i>
+      <div class="thread-info">
+        <p class="user-handle">@dave321</p>
+        <p class="summary">Asking about product stock...</p>
+        <p class="timestamp">10 minutes ago</p>
+      </div>
+      <span class="status generating">
+        <i class="fas fa-sync-alt"></i> Generating Response
+      </span>
+      <i class="fas fa-chevron-right view-thread"></i>
+    </div>
+  </div>
+</section>
+
+
+<section id="threadSection" class="dashboard-section">
+  <header class="thread-header">
+    <div class="header-info">
+  <h2>Conversation Overview</h2>
+
+  <p><strong>Chat ID:</strong> #123456789</p>
+  <p>
+    <strong><i class="fas fa-user"></i> User:</strong> @dave123
+    <span class="iconbadge"><i class="fab fa-facebook-f"></i> Facebook</span>
+  </p>
+  <br>
+  <p>
+    <strong>Responses:</strong> 2 (50% AI)
+  </p>
+  <p>
+    <strong>Credits Used:</strong>
+    <span class="credits">1</span>
+  </p>
+  <div class="footer">
+    Last updated: January 24, 2025
+  </div>
+</div>
+
+    <div class="header-actions" style="padding-top: 20px;">
+      <button class="btn block-user">
+        <i class="fas fa-user-slash"></i> Block User
+      </button>
+      <button class="btn mark-spam">
+        <i class="fas fa-exclamation-triangle"></i> Mark as Spam
+      </button>
+    </div>
+  </header>
+  <div class="divider"></div>
+
+  <div class="thread">
+    <!-- User Message -->
+    <div class="message user fade-in">
+      <div class="avatar">
+        <img src="https://placehold.co/40" alt="@dave123">
+      </div>
+      <div class="message-content">
+        <div class="message-header">
+          <span class="username">@dave123</span>
+          <span class="timestamp">10:15 AM</span>
+        </div>
+        <p>Hi there! I love your recent posts. Keep up the great work!</p>
+      </div>
+    </div>
+
+    <!-- AI Response -->
+    <div class="message ai fade-in">
+      <div class="avatar">
+        <img src="https://placehold.co/40" alt="AI Response">
+      </div>
+      <div class="message-content">
+        <div class="message-header">
+          <span class="username">Support Bot</span>
+          <span class="timestamp">10:16 AM</span>
+          <span class="badge ai-badge"><i class="fas fa-robot"></i> AI</span>
+        </div>
+        <p>Thank you so much, Dave! We're thrilled you enjoy our content. How can we assist you today?</p>
+      </div>
+    </div>
+
+    <!-- User Message -->
+    <div class="message user fade-in">
+      <div class="avatar">
+        <img src="https://placehold.co/40" alt="@dave123">
+      </div>
+      <div class="message-content">
+        <div class="message-header">
+          <span class="username">@dave123</span>
+          <span class="timestamp">10:17 AM</span>
+        </div>
+        <p>Do you have any plans for upcoming events?</p>
+      </div>
+    </div>
+
+    <div class="message real fade-in">
+      <div class="avatar">
+        <img src="https://placehold.co/40" alt="AI Response">
+      </div>
+      <div class="message-content">
+        <div class="message-header">
+          <span class="username">John Doe</span>
+          <span class="timestamp">10:16 AM</span>
+          <span class="badge agent-badge"><i class="fas fa-person"></i> Agent</span>
+        </div>
+        <p>Next Sunday we are doing a Q&A!</p>
+      </div>
+    </div>
+
+    <!-- User Message -->
+    <div class="message user fade-in">
+      <div class="avatar">
+        <img src="https://placehold.co/40" alt="@dave123">
+      </div>
+      <div class="message-content">
+        <div class="message-header">
+          <span class="username">@dave123</span>
+          <span class="timestamp">10:20 AM</span>
+        </div>
+        <p>Looking forward to it!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="response-box">
+    <textarea placeholder="Type your response here..."></textarea>
+    <button class="btn send-btn">
+      <i class="fas fa-paper-plane"></i> Send
+    </button>
+  </div>
+</section>
+
+
+
+
+<!-- CONFIGURATION TAB -->
+<section id="configurationSection" class="dashboard-section">
+  <h2>Configuration</h2>
+  <p>Set up Breezy and customise your settings to match your brand voice and maximize performance.</p><br>
+  <hr class="divider"><br>
+
+  <h3>Link Your Social Accounts</h3>
+  <div class="connections-grid">
+    <!-- X/TWITTER CONNECT-->
+    <div class="connection-card">
+      <i class="fa fa-twitter platform-icon"></i>
+
+      <p>Connect your X account to manage DMs and mentions.</p>
+      <button class="connect-btn" onclick="connectPlatform('Twitter')">Connect</button>
+    </div>
+    <!-- FACEBOOK CONNECT -->
+    <div class="connection-card">
+      <i class="fab fa-facebook-f platform-icon facebook"></i>
+
+      <p>Connect your Facebook page for automated responses.</p>
+      <button class="connect-btn" onclick="connectPlatform('Facebook')">Connect</button>
+    </div>
+    <!-- INSTAGRAM CONNECT -->
+    <div class="connection-card">
+      <i class="fab fa-instagram platform-icon instagram"></i>
+
+      <p>Automate responses for your Instagram DMs.</p>
+      <button class="connect-btn" onclick="connectPlatform('Instagram')">Connect</button>
+    </div>
+    <!-- WHATSAPP CONNECT -->
+    <div class="connection-card">
+      <i class="fab fa-whatsapp platform-icon whatsapp"></i>
+
+      <p>Enable WhatsApp automation via API.</p>
+      <button class="connect-btn" onclick="connectPlatform('WhatsApp')">Connect</button>
+    </div>
+  </div>
+  <br>
+  <hr class="divider"><br>
+
+  <h3>Personalize Your Experience</h3><br>
+  <form class="config-form">
+    <!-- Brand Tone Section -->
+    <div class="config-section grid-layout">
+      <h3>Set Your Brand Tone</h3>
+      <p>Select a tone that best reflects your brand personality.</p>
+      <br>
+      <div class="grid-item">
+        <label for="brandTone">Tone Style:</label>
+        <select id="brandTone">
+          <option>Friendly</option>
+          <option>Professional</option>
+          <option>Casual</option>
+          <option>Formal</option>
+          <option>Playful</option>
+          <option>Empathetic</option>
+          <option>Witty</option>
+          <option>Technical</option>
+          <option>Concise</option>
+          <option>Enthusiastic</option>
+          <option>Luxury</option>
+          <option>Trustworthy</option>
+          <option>Youthful</option>
+          <option>Bold</option>
+          <option>Relaxed</option>
+        </select>
+        <p class="tone-examples">
+          "Hey there! 😊 How can I assist you today?"
+          <!--<strong>Friendly:</strong> "Hey there! 😊 How can I assist you today?" <br>-->
+          <!--<strong>Professional:</strong> "Hello. How may I assist you today?"-->
+        </p>
+      </div>
+    </div>
+
+    <!-- Auto Responses Section -->
+    <div class="config-section grid-layout">
+      <h3>Response Scheduling</h3>
+      <p>Leave unchecked to keep auto responses active 24/7. Check to enable responses only within a specific time frame.</p>
+      <div class="grid-item">
+        <label class="switch-label">
+          <input type="checkbox" id="autoResponses"> Turn On Responses Within Timeframe
+        </label>
+        <div id="timeFramePicker" class="hidden">
+          <label for="startTime">Start Time:</label>
+          <input type="time" id="startTime">
+          <label for="endTime">End Time:</label>
+          <input type="time" id="endTime">
+        </div>
+      </div>
+    </div>
+
+    <!-- Human Intervention Section -->
+    <div class="config-section grid-layout">
+      <h3>Escalation to Human Support</h3>
+      <p>Choose how to handle messages requiring human attention.</p>
+      <div class="grid-item">
+        <label class="switch-label">
+          <input type="checkbox" id="aiDetection"> Use AI Detection <strong>(Recommended)</strong>
+        </label>
+        <label class="switch-label">
+          <input type="checkbox" id="keywordList"> Use Custom Keyword List
+        </label>
+        <textarea id="humanKeywords" rows="3" placeholder="Enter keywords, separated by commas (e.g., problem, issue, complaint)" disabled></textarea>
+      </div>
+    </div>
+
+    <!-- FAQ Builder Section -->
+    <div class="config-section grid-layout">
+      <h3>AI Training</h3>
+      <p>Add common questions and their responses.</p>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <input type="text" placeholder="Enter Question" class="faq-question">
+          <!--<input type="text" placeholder="Enter Alias (optional)" class="faq-alias">-->
+          <textarea placeholder="Enter Answer" class="faq-answer"></textarea>
+        </div>
+      </div>
+      <button type="button" id="addFaqBtn" class="add-faq-btn">
+        <i class="fas fa-plus"></i> Add FAQ
+      </button>
+    </div>
+
+    <div class="config-section grid-layout">
+      <h3>Not Available Yet</h3>
+    </div>
+
+    <div class="config-section grid-layout">
+      <h3>Not Available Yet</h3>
+    </div>
+
+    <!--<button type="submit" class="save-btn">Save Configuration</button>-->
+  </form>
+</section>
+
+
+<section id="connectionsSection" class="dashboard-section">
+  <h2>Connect Your Accounts</h2>
+  <p>Link your social media accounts to enable automated replies and analytics tracking.</p>
+  <hr class="divider">
+
+  <div class="connections-grid">
+    <!-- X -->
+    <div class="connection-card">
+      <i class="fa fa-twitter platform-icon twitter"></i>
+
+      <h3>X</h3>
+      <p>Connect your X account to manage DMs and mentions.</p>
+      <button class="connect-btn" onclick="connectPlatform('Twitter')">Connect</button>
+
+    </div>
+
+    <!-- Facebook -->
+    <div class="connection-card">
+      <i class="fab fa-facebook-f platform-icon facebook"></i>
+      <h3>Facebook</h3>
+      <p>Connect your Facebook page for automated responses.</p>
+      <button class="connect-btn" onclick="connectPlatform('Facebook')">Connect</button>
+    </div>
+
+    <!-- Instagram -->
+    <div class="connection-card">
+      <i class="fab fa-instagram platform-icon instagram"></i>
+      <h3>Instagram</h3>
+      <p>Automate responses for your Instagram DMs.</p>
+      <button class="connect-btn" onclick="connectPlatform('Instagram')">Connect</button>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="connection-card">
+      <i class="fab fa-whatsapp platform-icon whatsapp"></i>
+      <h3>WhatsApp</h3>
+      <p>Enable WhatsApp automation via API.</p>
+      <button class="connect-btn" onclick="connectPlatform('WhatsApp')">Connect</button>
+    </div>
+  </div>
+</section>
+
+<!-- PURCHASE CREDITS SECTION -->
+<!-- PURCHASE CREDITS SECTION -->
+<section id="purchaseSection" class="dashboard-section">
+  <h2>Purchase Credits</h2>
+  <p>
+    Our pay-as-you-go credit system lets you purchase credits as needed, ensuring you get the most out of our platform without any long-term commitment.
+  </p>
+  <br>
+  <hr class="divider"><br>
+  <div class="purchase-wrapper">
+    <!-- Purchase Options Container -->
+    <div class="purchase-options-container">
+      <!--<p class="conversion-rate">
+        <strong>1 Credit = 1 Response</strong>
+      </p>-->
+      <div class="purchase-options">
+        <div class="purchase-card">
+          <i class="fas fa-coins"></i>
+          <h3>Basic</h3>
+          <p class="credits">1,000 Credits</p>
+          <p class="price">$9.99</p>
+          <button class="purchase-btn">Buy Now</button>
+        </div>
+        <div class="purchase-card">
+          <i class="fas fa-coins"></i>
+          <h3>Premium</h3>
+          <p class="credits">5,000 Credits</p>
+          <p class="price">$44.99 <small>(Save 10%)</small></p>
+          <button class="purchase-btn">Buy Now</button>
+        </div>
+        <div class="purchase-card">
+          <i class="fas fa-coins"></i>
+          <h3>Enterprise</h3>
+          <p class="credits">10,000 Credits</p>
+          <p class="price">$79.99 <small>(Save 20%)</small></p>
+          <button class="purchase-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <!-- Custom Purchase Box -->
+      <div class="custom-purchase-box">
+        <h3>Buy Custom Amount</h3>
+        <label for="creditSlider">Select your credit amount:</label>
+        <input type="range" id="creditSlider" min="1000" max="100000" step="1000" value="1000">
+        <p id="creditValue">1,000 Credits - $9.99</p>
+        <button class="purchase-btn">Buy Custom Credits</button>
+      </div>
+
+      <!-- Credit Options -->
+      <!--<div class="credit-options">
+        <label class="custom-checkbox">
+          <input type="checkbox" id="lowCreditNotify">
+          <span class="checkmark"></span>
+          Notify me when credits are low (via email)
+        </label>
+
+        <label class="custom-checkbox">
+          <input type="checkbox" id="autoPurchase">
+          <span class="checkmark"></span>
+          Automatically purchase credits when required
+        </label>
+
+        <div class="auto-purchase-settings" id="autoPurchaseSettings">
+          <label for="autoPurchaseAmount">Amount to purchase each time:</label>
+          <input type="number" id="autoPurchaseAmount" placeholder="e.g., 1000" min="1000" step="1000">
+          <span id="autoPurchaseCost">$9.99</span>
+        </div>
+      </div>-->
+    </div>
+
+    <!-- Q&A Section -->
+    <div class="purchase-qa">
+      <h3>Frequently Asked Questions</h3>
+      <div class="qa-item">
+        <p class="question"><strong>How do credits work?</strong></p>
+        <p class="answer">Each credit allows you to generate one AI response. Purchase credits based on your anticipated usage to ensure uninterrupted service.</p>
+      </div>
+      <hr class="divider">
+      <div class="qa-item">
+        <p class="question"><strong>Do unused credits expire?</strong></p>
+        <p class="answer">Credits do not expire, allowing you to use them whenever you need without rush.</p>
+      </div>
+      <hr class="divider">
+      <div class="qa-item">
+        <p class="question"><strong>How secure is my payment information?</strong></p>
+        <p class="answer">We use industry-standard encryption and secure payment gateways to protect your financial information.</p>
+      </div>
+      <hr class="divider">
+      <div class="qa-item">
+        <p class="question"><strong>Is there a refund policy?</strong></p>
+        <p class="answer">We do not offer refunds for credits. Once purchased, our system has allocated you usage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ACCOUNT SETTINGS SECTION -->
+<section id="accountSection" class="dashboard-section">
+  <h2>Account Settings</h2>
+  <p>Manage your personal details, security, and preferences.</p><br>
+  <hr class="divider"><br>
+  <form class="account-form">
+    <!-- Email -->
+    <label for="accountEmail">Email Address:</label>
+    <input type="email" id="accountEmail" value="user@example.com" />
+
+    <!-- Password -->
+    <label for="accountPassword">Password:</label>
+    <input type="password" id="accountPassword" value="••••••••" />
+
+    <!-- Time Zone -->
+    <label for="timeZone">Time Zone:</label>
+    <select id="timeZone">
+      <option>UTC-12:00</option>
+      <option>UTC-11:00</option>
+      <option>UTC-08:00 (Pacific Time)</option>
+      <option>UTC-05:00 (Eastern Time)</option>
+      <option>UTC+00:00 (London)</option>
+      <option>UTC+01:00 (Berlin)</option>
+      <option>UTC+05:30 (India)</option>
+      <option>UTC+08:00 (China)</option>
+      <option>UTC+09:00 (Japan)</option>
+      <option>UTC+10:00 (Sydney)</option>
+      <!-- etc. -->
+    </select>
+
+    <!-- Language -->
+    <label for="accountLanguage">Language:</label>
+    <select id="accountLanguage">
+      <option>English</option>
+      <option>Spanish</option>
+      <option>German</option>
+      <option>French</option>
+      <!-- ... -->
+    </select>
+
+    <!-- Email Notifications -->
+    <label>
+      <input type="checkbox" id="notifications" checked> Email Notifications
+    </label>
+
+    <label>
+      <input type="checkbox" id="twoFactorAuth"> Two-Factor Authentication
+    </label>
+
+    <!-- Additional fields as needed -->
+    <br>
+    <button type="submit" class="save-btn">Update Account</button>
+  </form>
+</section>
+
+<!-- FEEDBACK SECTION -->
+<section id="feedbackSection" class="dashboard-section">
+  <h2>Give Feedback</h2>
+  <p>Your feedback helps us improve Breezy. Please take a moment to rate your experience.</p><br>
+  <hr class="divider"><br>
+
+  <form id="feedbackForm" class="feedback-form">
+    <h3>Your Thoughts Matter</h3><br>
+    <label for="usefulness">Overall Usefulness</label>
+    <div class="rating-group">
+      <input type="radio" name="usefulness" value="1" id="usefulness-1">
+      <label for="usefulness-1">Bad</label>
+      <input type="radio" name="usefulness" value="2" id="usefulness-2">
+      <label for="usefulness-2">Poor</label>
+      <input type="radio" name="usefulness" value="3" id="usefulness-3">
+      <label for="usefulness-3">Okay</label>
+      <input type="radio" name="usefulness" value="4" id="usefulness-4">
+      <label for="usefulness-4">Good</label>
+      <input type="radio" name="usefulness" value="5" id="usefulness-5">
+      <label for="usefulness-5">Great</label>
+    </div>
+
+    <label for="usability">Website Usability</label>
+    <div class="rating-group">
+      <input type="radio" name="usability" value="1" id="usability-1">
+      <label for="usability-1">Bad</label>
+      <input type="radio" name="usability" value="2" id="usability-2">
+      <label for="usability-2">Poor</label>
+      <input type="radio" name="usability" value="3" id="usability-3">
+      <label for="usability-3">Okay</label>
+      <input type="radio" name="usability" value="4" id="usability-4">
+      <label for="usability-4">Good</label>
+      <input type="radio" name="usability" value="5" id="usability-5">
+      <label for="usability-5">Great</label>
+    </div>
+
+
+    <!-- Text Feedback -->
+    <label for="feedbackText">Additional Feedback:</label>
+    <textarea id="feedbackText" placeholder="Enter your feedback here..." readonly></textarea>
+<br><br>
+<label>
+  <input type="checkbox" id="anonymousCheckbox" name="anonymous">
+  Anonymous
+</label>
+<br>
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Submit Feedback</button>
+  </form>
+</section>
+<section id="helpSection" class="dashboard-section">
+  <h2>Dashboard Help</h2>
+  <p>Need quick assistance? Here are some frequently asked questions to help you navigate the dashboard.</p><br>
+  <hr class="divider">
+
+  <div class="faq-container">
+    <h3>Frequently Asked Questions</h3><br>
+    <div class="faq-item">
+      <div class="faq-question">
+        <i class="fas fa-credit-card"></i> How do I purchase credits?
+        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="faq-answer">
+        Go to the <strong>Purchase Credits</strong> section, select a package or use the custom slider, and proceed to checkout.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <i class="fas fa-clock"></i> How can I set up auto-responses during specific hours?
+        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="faq-answer">
+        In the <strong>Configuration</strong> section, enable the <em>Auto Responses</em> checkbox and select your desired start and end times.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <i class="fas fa-cogs"></i> How do I customize my brand’s tone?
+        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="faq-answer">
+        Navigate to the <strong>Configuration</strong> section and choose from the available tone styles that best represent your brand's personality.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <i class="fas fa-shield-alt"></i> How do I set up human intervention for complex queries?
+        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="faq-answer">
+        In the <strong>Configuration</strong> section, enable <em>AI Detection</em> for automatic identification of complex queries or manually add keywords for specific cases.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <i class="fas fa-chart-line"></i> What analytics are available, and how do I interpret them?
+        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="faq-answer">
+        The analytics dashboard provides insights into daily replies, credit usage, response effectiveness, and human intervention needs.
+        Click "View More" to see detailed charts.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <i class="fas fa-envelope"></i> How do I get notified when credits are low?
+        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="faq-answer">
+        In the <strong>Purchase Credits</strong> section, enable the <em>Notify When Credits Are Low</em> checkbox and provide your email.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <i class="fas fa-user-lock"></i> How do I change my account settings?
+        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div class="faq-answer">
+        Go to the <strong>Account Settings</strong> section, where you can update your password, email, and notification preferences.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+</main>
+
+<!-- SCRIPTS -->
+<script src="script.js"></script>
+<script>
+// 1. Check if user is logged in, else redirect
+if (!localStorage.getItem('isLoggedIn')) {
+  //window.location.href = 'login.html';
+}
+
+// 2. Sidebar nav switching
+/*const sidebarItems = document.querySelectorAll('.sidebar-item');
+const sections = document.querySelectorAll('.dashboard-section');
+
+sidebarItems.forEach(item => {
+item.addEventListener('click', () => {
+// Deactivate all
+sidebarItems.forEach(i => i.classList.remove('active'));
+sections.forEach(sec => sec.classList.remove('active-section'));
+
+// Activate current
+item.classList.add('active');
+const targetId = item.getAttribute('data-target');
+document.getElementById(targetId).classList.add('active-section');
+});
+});
+
+document.querySelector('.credit-balance').addEventListener('click', () => {
+sections.forEach(sec => sec.classList.remove('active-section'));
+sections.forEach(sec => sec.classList.remove('active'));
+document.getElementById('purchaseSection').classList.add('active-section');
+document.getElementById('purchaseSection').classList.add('active')
+});*/
+
+// switch to / not # when its public.
+// 2. Sidebar nav switching (with url changing)
+const sidebarItems = document.querySelectorAll('.sidebar-item');
+const sections = document.querySelectorAll('.dashboard-section');
+
+// Function to switch sections
+function switchSection(targetId) {
+  // Deactivate all
+  sidebarItems.forEach(i => i.classList.remove('active'));
+  sections.forEach(sec => sec.classList.remove('active-section'));
+
+  // Activate current
+  const targetItem = document.querySelector(`[data-target='${targetId}']`);
+  if (targetItem) {
+    targetItem.classList.add('active');
+  }
+  document.getElementById(targetId).classList.add('active-section');
+
+  window.scrollTo({ top: 0 });
+
+  // Update URL without reloading the page
+  const newPath = targetId === 'dashboardSection' ? window.location.pathname : `#${targetId.replace("Section", "")}`;
+  history.pushState({ section: targetId }, '', newPath);
+}
+
+// Sidebar navigation click handling
+sidebarItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const targetId = item.getAttribute('data-target');
+    switchSection(targetId);
+  });
+});
+
+// Handle credit balance click
+document.querySelector('.credit-balance').addEventListener('click', () => {
+  switchSection('purchaseSection');
+});
+
+// Demo message > thread
+document.querySelector('.message-thread').addEventListener('click', () => {
+  switchSection('threadSection');
+});
+
+// Handle page load with pushState
+window.addEventListener('load', () => {
+  let sectionFromURL = window.location.hash.substring(1);
+  if (sectionFromURL) {
+    sectionFromURL = sectionFromURL + 'Section';
+  } else {
+    sectionFromURL = 'dashboardSection';
+  }
+  if (document.getElementById(sectionFromURL)) {
+    switchSection(sectionFromURL);
+  } else {
+    switchSection('dashboardSection');
+  }
+});
+
+// Handle browser navigation (back/forward)
+window.addEventListener('popstate', (event) => {
+  if (event.state && event.state.section) {
+    switchSection(event.state.section);
+  }
+});
+
+// Handle URL changes when pasting a new URL
+window.addEventListener('hashchange', () => {
+  let sectionFromURL = window.location.hash.substring(1);
+  if (sectionFromURL) {
+    sectionFromURL = sectionFromURL + 'Section';
+  } else {
+    sectionFromURL = 'dashboardSection';
+  }
+  if (document.getElementById(sectionFromURL)) {
+    switchSection(sectionFromURL);
+  }
+});
+
+
+
+// 3. Logout
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  localStorage.removeItem('isLoggedIn');
+  window.location.href = 'login.html';
+});
+
+
+// Total Responses Chart
+// Ensure the DOM is fully loaded before initializing charts
+document.addEventListener('DOMContentLoaded', function () {
+  // Function to set dynamic chart heights based on container width
+  function setChartHeight(chartId, multiplier = 0.5) {
+    const chartContainer = document.getElementById(chartId).parentElement;
+    if (!chartContainer) return;
+    const containerWidth = chartContainer.offsetWidth;
+    const newHeight = containerWidth * multiplier; // Adjust multiplier as needed
+    const chartCanvas = document.getElementById(chartId);
+    if (chartCanvas) {
+      chartCanvas.style.height = `${newHeight}px`;
+    }
+  }
+
+  // Initialize all charts
+  function initializeCharts() {
+    // Total Responses Chart - Line Chart
+    const ctxTotalResponses = document.getElementById("totalResponsesChart").getContext("2d");
+    const totalResponsesChart = new Chart(ctxTotalResponses, {
+      type: "line",
+      data: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [{
+          label: "Total Responses",
+          data: [150, 180, 200, 220, 210, 250, 300],
+          backgroundColor: "rgba(0, 82, 255, 0.2)",
+          borderColor: "rgba(0, 82, 255, 1)",
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4, // Smooth curves
+          pointRadius: 4, // Size of data points
+          pointBackgroundColor: "rgba(0, 82, 255, 1)"
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              color: '#212529'
+            }
+          },
+          tooltip: {
+            enabled: true
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: '#6c757d'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: '#e0e0e0'
+            },
+            ticks: {
+              color: '#6c757d'
+            }
+          }
+        }
+      }
+    });
+
+    // Human Intervention Required Chart - Doughnut Chart
+    const ctxHumanIntervention = document.getElementById("humanInterventionChart").getContext("2d");
+    const humanInterventionChart = new Chart(ctxHumanIntervention, {
+      type: "doughnut",
+      data: {
+        labels: ["Handled by AI", "Human Intervention"],
+        datasets: [{
+          data: [85, 15],
+          backgroundColor: ["#0052ff", "#ffbb00"],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+              color: '#212529'
+            }
+          },
+          tooltip: {
+            enabled: true
+          }
+        }
+      }
+    });
+
+    // Credit Usage Chart - Bar Chart
+    const ctxCreditUsage = document.getElementById("creditsUsageChart").getContext("2d");
+    const creditsUsageChart = new Chart(ctxCreditUsage, {
+      type: "bar",
+      data: {
+        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+        datasets: [{
+          label: "Credits Used",
+          data: [500, 750, 650, 800],
+          backgroundColor: "rgba(255, 187, 0, 0.6)",
+          borderColor: "rgba(255, 187, 0, 1)",
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: true
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: '#6c757d'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: '#e0e0e0'
+            },
+            ticks: {
+              color: '#6c757d'
+            }
+          }
+        }
+      }
+    });
+
+    // Average Response Time Chart - Line Chart
+    const ctxResponseTime = document.getElementById("responseTimeChart").getContext("2d");
+    const responseTimeChart = new Chart(ctxResponseTime, {
+      type: "line",
+      data: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [{
+          label: "Response Time (seconds)",
+          data: [30, 28, 32, 27, 25, 29, 26],
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointBackgroundColor: "rgba(255, 99, 132, 1)"
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              color: '#212529'
+            }
+          },
+          tooltip: {
+            enabled: true
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: '#6c757d'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: '#e0e0e0'
+            },
+            ticks: {
+              color: '#6c757d'
+            }
+          }
+        }
+      }
+    });
+
+    // Engagement Rate Chart - Pie Chart
+    const ctxEngagementRate = document.getElementById("engagementRateChart").getContext("2d");
+    const engagementRateChart = new Chart(ctxEngagementRate, {
+      type: "pie",
+      data: {
+        labels: ["Engaged", "Not Engaged"],
+        datasets: [{
+          data: [70, 30],
+          backgroundColor: ["#28a745", "#dc3545"],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+              color: '#212529'
+            }
+          },
+          tooltip: {
+            enabled: true
+          }
+        }
+      }
+    });
+
+    // Channel Breakdown Chart - Bar Chart
+    const ctxChannelBreakdown = document.getElementById("channelBreakdownChart").getContext("2d");
+    const channelBreakdownChart = new Chart(ctxChannelBreakdown, {
+      type: "bar",
+      data: {
+        labels: ["Email", "Facebook", "X", "Instagram"],
+        datasets: [{
+          label: "Messages",
+          data: [400, 250, 300, 200],
+          backgroundColor: ["#003ecc", "#ffbb00", "#0066cc", "#00cc88"],
+          borderColor: ["#003ecc", "#ffbb00", "#0066cc", "#00cc88"],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: true
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: '#6c757d'
+            }
+          },
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: '#e0e0e0'
+            },
+            ticks: {
+              color: '#6c757d'
+            }
+          }
+        }
+      }
+    });
+
+    // Set initial chart heights based on container widths
+    const chartIds = [
+      "totalResponsesChart",
+      "humanInterventionChart",
+      "creditsUsageChart",
+      "responseTimeChart",
+      "engagementRateChart",
+      "channelBreakdownChart"
+    ];
+
+    chartIds.forEach(chartId => {
+      setChartHeight(chartId, 0.5); // Adjust multiplier as needed
+    });
+  }
+
+  // Initialize charts on page load
+  initializeCharts();
+
+  // Update chart heights on window resize to maintain responsiveness
+  window.addEventListener('resize', function () {
+    const chartIds = [
+      "totalResponsesChart",
+      "humanInterventionChart",
+      "creditsUsageChart",
+      "responseTimeChart",
+      "engagementRateChart",
+      "channelBreakdownChart"
+    ];
+
+    chartIds.forEach(chartId => {
+      setChartHeight(chartId, 0.5); // Adjust multiplier as needed
+    });
+  });
+});
+
+
+// 5. Interactive FAQ builder
+const addFaqBtn = document.getElementById('addFaqBtn');
+const faqList = document.getElementById('faqList');
+
+addFaqBtn.addEventListener('click', () => {
+  const faqItem = document.createElement('div');
+  faqItem.className = 'faq-item';
+
+  faqItem.innerHTML = `
+  <input type="text" placeholder="Enter Question" class="faq-question" />
+  <textarea placeholder="Enter Answer" class="faq-answer"></textarea>
+  `;
+  faqList.appendChild(faqItem);
+});
+
+// Show/hide time frame selector when checkbox is clicked
+document.getElementById('autoResponses').addEventListener('change', function() {
+  document.getElementById('timeFramePicker').classList.toggle('hidden', !this.checked);
+});
+
+// Ensure only one human intervention method is selected
+const aiDetection = document.getElementById('aiDetection');
+const keywordList = document.getElementById('keywordList');
+const humanKeywords = document.getElementById('humanKeywords');
+
+aiDetection.addEventListener('change', () => {
+  if (aiDetection.checked) {
+    keywordList.checked = false;
+    humanKeywords.disabled = true;
+  }
+});
+
+keywordList.addEventListener('change', () => {
+  if (keywordList.checked) {
+    aiDetection.checked = false;
+    humanKeywords.disabled = false;
+  }
+});
+
+// Add FAQ entry
+document.getElementById('addFaqBtn').addEventListener('click', function() {
+  const faqList = document.getElementById('faqList');
+  const newFaq = document.createElement('div');
+  newFaq.classList.add('faq-item');
+
+  newFaq.innerHTML = `
+  <input type="text" placeholder="Enter Question" class="faq-question">
+  <input type="text" placeholder="Enter Alias (optional)" class="faq-alias">
+  <textarea placeholder="Enter Answer" class="faq-answer"></textarea>
+  `;
+
+  faqList.appendChild(newFaq);
+});
+
+// Slider logic to display credit value dynamically
+const creditSlider = document.getElementById('creditSlider');
+const creditValue = document.getElementById('creditValue');
+
+creditSlider.addEventListener('input', function() {
+  let credits = parseInt(this.value);
+  let cost = (credits / 1000) * 9.99;
+  creditValue.textContent = `${credits.toLocaleString()} Credits - $${cost.toFixed(2)}`;
+});
+
+// Auto-purchase settings toggle
+/*const autoPurchaseCheckbox = document.getElementById('autoPurchase');
+const autoPurchaseSettings = document.getElementById('autoPurchaseSettings');
+
+autoPurchaseCheckbox.addEventListener('change', function() {
+  if (this.checked) {
+    autoPurchaseSettings.style.display = 'block';
+  } else {
+    autoPurchaseSettings.style.display = 'none';
+  }
+});*/
+
+// FAQ Toggle Logic
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    // Close all other FAQ items
+    document.querySelectorAll('.faq-item').forEach(faq => {
+      if (faq !== item) {
+        faq.classList.remove('active');
+      }
+    });
+
+    // Toggle the clicked FAQ item
+    item.classList.toggle('active');
+  });
+});
+
+function connectPlatform(platform) {
+  const button = document.querySelector(`.connection-card .connect-btn`);
+
+  if (button.classList.contains("connected")) {
+    button.textContent = "Connect";
+    button.style.background = "var(--primary-color)";
+    button.classList.remove("connected");
+    button.classList.add("disconnected");
+  } else {
+    button.textContent = "Connected";
+    button.style.background = "#28a745";
+    button.classList.add("connected");
+    button.classList.remove("disconnected");
+  }
+
+}
+
+const autoResponsesCheckbox = document.getElementById("autoResponses");
+const timeFramePicker = document.getElementById("timeFramePicker");
+
+// Function to toggle the time selectors
+function toggleTimeFrame() {
+  if (autoResponsesCheckbox.checked) {
+    timeFramePicker.classList.remove("hidden");
+  } else {
+    timeFramePicker.classList.add("hidden");
+  }
+}
+
+// Event listener for checkbox state change
+autoResponsesCheckbox.addEventListener("change", toggleTimeFrame);
+
+// Initial check in case page is reloaded with checkbox checked
+toggleTimeFrame();
+
+// Credit Slider Functionality
+
+function updateCreditValue() {
+  const credits = creditSlider.value;
+  let cost;
+
+  if (credits <= 10000) {
+    cost = (credits / 1000) * 9.99;
+  } else if (credits <= 50000) {
+    cost = (credits / 1000) * 8.99; // Example discount for bulk
+  } else {
+    cost = (credits / 1000) * 7.99; // Further discount
+  }
+
+  creditValue.textContent = `${credits.toLocaleString()} Credits - $${cost.toFixed(2)}`;
+}
+
+creditSlider.addEventListener('input', updateCreditValue);
+// Initialize on page load
+updateCreditValue();
+
+
+/*autoPurchaseCheckbox.addEventListener('change', function() {
+  if (this.checked) {
+    autoPurchaseSettings.style.display = 'block';
+  } else {
+    autoPurchaseSettings.style.display = 'none';
+  }
+});
+
+// Calculate Cost for Auto Purchase Amount
+const autoPurchaseAmount = document.getElementById('autoPurchaseAmount');
+const autoPurchaseCost = document.getElementById('autoPurchaseCost');
+
+function updateAutoPurchaseCost() {
+  const amount = parseInt(autoPurchaseAmount.value);
+  if (!isNaN(amount)) {
+    // Assuming 1 Credit = $0.01 for auto purchase
+    const cost = amount * 0.01;
+    autoPurchaseCost.textContent = `$${cost.toFixed(2)}`;
+  } else {
+    autoPurchaseCost.textContent = `$0.00`;
+  }
+}
+
+autoPurchaseAmount.addEventListener('input', updateAutoPurchaseCost);
+// Initialize on page load
+updateAutoPurchaseCost();*/
+
+</script>
+</body>
+</html>
