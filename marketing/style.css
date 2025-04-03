@@ -343,6 +343,7 @@ html, body {
 .pain-solution-section {
   background: #fff; /* or match your site’s background */
   padding: 1rem 0 2rem 0;
+  margin: 0 2rem 1.5rem 2rem;
   /* fade-in can be handled by your IntersectionObserver
      if you have .fade-in-on-scroll logic in JS */
 }
@@ -407,7 +408,6 @@ html, body {
   .pain-col, .solution-col {
     flex: none;
     max-width: 100%;
-    margin: 0 2rem 1.5rem 2rem; /* stack columns, add spacing at bottom of each */
   }
   .solution-col {
     margin-bottom: 0; /* final column can have 0 bottom margin if you prefer */
@@ -444,6 +444,8 @@ html, body {
   flex: 1 1 250px;
   border: 1px solid #b7b7b7;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+  margin: 0 2rem 0rem 2rem;
   transition: transform 0.3s;
 }
 .feature-box:hover {
@@ -1049,4 +1051,1099 @@ html, body {
 
 section[id] {
   scroll-margin-top: 60px; /* Height of your navbar */
+}
+/***********************************************
+  NAV / HEADER
+***********************************************/
+.header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.logo {
+  font-weight: 500;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0052ff;
+  position: relative;
+  z-index: 1001; /* Above everything, including mobile menu */
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #0052ff;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cta-btn {
+  background: #0052ff;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #003ecc;
+}
+
+.secondary-btn {
+  background: #fff;
+  color: #0052ff;
+  border: 1px solid #0052ff;
+}
+
+.secondary-btn:hover {
+  background: #0052ff;
+  color: #fff;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+}
+
+/* Hamburger Styling */
+.hamburger {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #0052ff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #0052ff;
+  transition: all 0.4s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+.menu-toggle.active .hamburger {
+  background: transparent;
+}
+
+.menu-toggle.active .hamburger::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Nav */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1.5rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 60px 2rem 2rem; /* Adjusted for logo height */
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transition: right 0.4s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .nav-links li a {
+    font-size: 1.2rem;
+    padding: 1rem;
+    display: block;
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.1), #fff);
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .nav-links li a:hover {
+    transform: translateX(10px);
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.2), #fff);
+    color: #0052ff;
+  }
+
+  .nav-links li a.active {
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.3), #fff);
+    color: #0052ff;
+  }
+
+  .mobile-footer {
+    display: none;
+  }
+
+  .mobile-footer.show {
+    display: block;
+    margin-top: auto; /* Push to bottom */
+    text-align: center;
+    color: #535353;
+    font-size: 0.9rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+}
+
+/* Ensure desktop layout */
+@media (min-width: 769px) {
+  .nav-links {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    flex-direction: row;
+    padding: 0;
+    box-shadow: none;
+    transition: none;
+  }
+
+  .nav-links li a {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-footer {
+    display: none !important;
+  }
+
+  .nav-actions {
+    display: flex;
+  }
+}
+
+/***********************************************
+  HERO
+***********************************************/
+.hero-text h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #0052ff;
+}
+
+.hero-text .ai-powered {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-text .ai-powered::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="%230052ff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>');
+  background-size: 100% 100%;
+  /* Animation already removed */
+}
+
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    white-space: normal;
+    word-break: normal;
+  }
+
+  .hero-text h1 br {
+    display: none;
+  }
+}
+
+/***********************************************
+  NAV / HEADER
+***********************************************/
+.header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.logo {
+  font-weight: 500;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0052ff;
+  position: relative;
+  z-index: 1001;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #0052ff;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cta-btn {
+  background: #0052ff;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #003ecc;
+}
+
+.secondary-btn {
+  background: #fff;
+  color: #0052ff;
+  border: 1px solid #0052ff;
+}
+
+.secondary-btn:hover {
+  background: #0052ff;
+  color: #fff;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+}
+
+/* Hamburger Styling */
+.hamburger {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #0052ff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #0052ff;
+  transition: all 0.4s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+.menu-toggle.active .hamburger {
+  background: transparent;
+}
+
+.menu-toggle.active .hamburger::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .hamburger::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Disable scrolling when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Mobile Nav */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1.5rem;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    padding: 60px 2rem; /* Adjusted for logo height */
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transition: right 0.4s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .nav-links li {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+  }
+
+  .nav-links li a {
+    font-size: 1.2rem;
+    padding: 1rem;
+    display: block;
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.1), #fff);
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    transition: transform 0.3s ease, background 0.3s ease;
+    width: 80%; /* Consistent width for centering */
+    text-align: center;
+  }
+
+  .nav-links li a:hover {
+    transform: translateX(10px);
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.2), #fff);
+    color: #0052ff;
+  }
+
+  .nav-links li a.active {
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.3), #fff);
+    color: #0052ff;
+  }
+
+  .mobile-footer {
+    display: none;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+  }
+
+  .mobile-footer.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+    text-align: center;
+    color: #535353;
+    font-size: 0.9rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+}
+
+/* Ensure desktop layout */
+@media (min-width: 769px) {
+  .nav-links {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    flex-direction: row;
+    padding: 0;
+    box-shadow: none;
+    transition: none;
+    justify-content: flex-start; /* Reset for desktop */
+  }
+
+  .nav-links li {
+    display: block;
+  }
+
+  .nav-links li a {
+    background: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    text-align: left;
+  }
+
+  .mobile-footer {
+    display: none !important;
+  }
+
+  .nav-actions {
+    display: flex;
+  }
+}
+
+/***********************************************
+  WHY SECTION
+***********************************************/
+.why-section {
+  background-color: #F8F9FA;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.why-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.three-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.feature-box {
+  background: #fff;
+  border-radius: 6px;
+  padding: 2rem;
+  flex: 1 1 250px;
+  border: 1px solid #b7b7b7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.feature-box:hover {
+  transform: translateY(-3px);
+}
+
+.feature-box i {
+  font-size: 2rem;
+  color: #0052ff;
+  margin-bottom: 1rem;
+}
+
+.feature-box h3 {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.feature-box p {
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .feature-box {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+/***********************************************
+  HOW EASY (TIMELINE)
+***********************************************/
+.steps-section {
+  background: #fafafa;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.steps-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+/* DESKTOP (>= 769px) */
+@media (min-width: 769px) {
+  .steps-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .step-box {
+    width: 250px;
+    background: #fff; /* Consistent background */
+    padding: 2rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    flex: 0 0 auto;
+  }
+
+  .step-box:hover {
+    transform: translateY(-3px);
+  }
+
+  .step-box i {
+    font-size: 1.8rem;
+    color: #0052ff;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-box h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-box p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .step-connector {
+    width: 40px;
+    height: 2px;
+    background: #ccc;
+    align-self: center;
+  }
+}
+
+/* MOBILE (<= 768px) */
+@media (max-width: 768px) {
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  .step-box {
+    background: #fff; /* Consistent background, no change on mobile */
+    padding: 1.5rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    width: 100%;
+  }
+
+  .step-box:hover {
+    transform: translateY(-3px);
+  }
+
+  .step-box i {
+    font-size: 1.6rem;
+    color: #0052ff;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-box h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-box p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+}
+
+/***********************************************
+  COMPARISON SECTION
+***********************************************/
+.comparison-section {
+  border-radius: 20px;
+  padding: 3rem 0; /* Reduced padding to match Why Use Breezy */
+}
+
+.comparison-container-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  border-radius: 8px;
+  padding: 0 2rem; /* Match Why Use Breezy padding */
+}
+
+.comparison-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.comparison-container h2 {
+  font-size: 1.8rem;
+  color: #0052ff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.comparison-desc {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* SLIDER WRAPPER */
+.slider-wrapper {
+  margin-bottom: 2rem;
+}
+
+.slider-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.slider-label i {
+  margin-right: 0.5rem;
+  color: #0052ff;
+}
+
+#msgSlider {
+  width: 100%;
+  cursor: pointer;
+}
+
+.slider-values {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+#msgCount {
+  color: #0052ff;
+}
+
+/* RESULTS DISPLAY */
+.results-display {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.result-card {
+  flex: 1 1 200px;
+  background: #f9f9f9;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-3px);
+}
+
+.result-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.result-card p.cost {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0052ff;
+}
+
+/* NOTE */
+.note {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .result-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .result-card p.cost {
+    font-size: 1.1rem;
+  }
+
+  .comparison-container-container {
+    padding: 0 2rem; /* Consistent padding on mobile */
+  }
+}
+
+/***********************************************
+  HOW EASY (TIMELINE)
+***********************************************/
+.steps-section {
+  background: #fafafa;
+  padding: 3rem 0;
+  text-align: center;
+  margin: 0 2rem; /* Added consistent margins */
+}
+
+.steps-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+/* DESKTOP (>= 769px) */
+@media (min-width: 769px) {
+  .steps-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1200px; /* Added max-width to prevent overflow */
+    margin: 0 auto; /* Center the row */
+  }
+
+  .step-box {
+    width: 250px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    flex: 0 0 auto;
+  }
+}
+
+/* MOBILE (<= 768px) */
+@media (max-width: 768px) {
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    justify-content: center;
+    max-width: 100%; /* Prevent overflow */
+    margin: 0 auto;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  .step-box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    width: 100%;
+  }
+}
+
+/***********************************************
+  NAV / HEADER - MOBILE SPECIFIC
+***********************************************/
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1.5rem;
+    justify-content: center; /* Center logo on mobile */
+  }
+
+  .logo {
+    margin: 0 auto; /* Ensure logo is centered */
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the links */
+    align-items: center; /* Horizontally center the links */
+    padding: 60px 2rem;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transition: right 0.4s ease-in-out;
+    z-index: 999;
+    display: flex; /* Ensure flex properties work */
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .nav-links li {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    width: 100%; /* Ensure the li takes full width for consistent button sizing */
+    max-width: 400px; /* Optional: cap the width for larger screens to avoid overly wide buttons */
+  }
+
+  .nav-links li a {
+    font-size: 1.2rem;
+    padding: 1rem;
+    display: block;
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.1), #fff);
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    transition: transform 0.3s ease, background 0.3s ease;
+    width: 80%; /* Keep the original width */
+    max-width: 100%; /* Ensure it doesn't exceed the parent li */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in width */
+  }
+
+  .nav-links li a:hover {
+    transform: translateX(10px);
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.2), #fff);
+    color: #0052ff;
+  }
+
+  .nav-links li a.active {
+    background: linear-gradient(to right, rgba(0, 82, 255, 0.3), #fff);
+    color: #0052ff;
+  }
+
+  .mobile-footer {
+    display: none;
+    opacity: 1; /* Removed animation */
+    transform: none; /* Removed animation */
+    transition: none; /* Removed animation */
+    position: absolute; /* Keep it at the bottom */
+    bottom: 2rem; /* Position it 2rem from the bottom */
+    width: 100%;
+    text-align: center;
+    color: #535353;
+    font-size: 0.9rem;
+    padding-top: 1rem; /* Add some spacing */
+  }
+
+  .mobile-footer.show {
+    display: block;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+}
+
+/***********************************************
+  HOW EASY (TIMELINE)
+***********************************************/
+.steps-section {
+  background: #fafafa;
+  padding: 3rem 0;
+  text-align: center;
+  margin: 0 2rem; /* Consistent margins */
+}
+
+.steps-section h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+/* DESKTOP (>= 769px) */
+@media (min-width: 769px) {
+  .steps-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: calc(100% - 4rem); /* Ensure it never exceeds viewport width minus margins */
+    width: 1080px; /* Ideal width: 4 steps (250px each) + 3 connectors (40px each) + gaps */
+    margin: 0 auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
+  }
+
+  .step-box {
+    width: 250px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    flex: 0 0 auto;
+  }
+
+  .step-box:hover {
+    transform: translateY(-3px);
+  }
+
+  .step-box i {
+    font-size: 1.8rem;
+    color: #0052ff;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-box h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-box p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .step-connector {
+    width: 40px;
+    height: 2px;
+    background: #ccc;
+    align-self: center;
+  }
+}
+
+/* MOBILE (<= 768px) */
+@media (max-width: 768px) {
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    justify-content: center;
+    max-width: 100%; /* Prevent overflow */
+    margin: 0 auto;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  .step-box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    width: 100%;
+  }
+
+  .step-box:hover {
+    transform: translateY(-3px);
+  }
+
+  .step-box i {
+    font-size: 1.6rem;
+    color: #0052ff;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-box h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-box p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
 }

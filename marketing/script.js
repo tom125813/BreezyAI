@@ -6,14 +6,41 @@ window.addEventListener('load', () => {
   }
 });
 
+
 // MOBILE NAV
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
+const mobileFooter = navLinks.querySelector('.mobile-footer');
+const body = document.body;
+
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
+    const isActive = menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('show', isActive);
+    mobileFooter.classList.toggle('show', isActive);
+    body.classList.toggle('menu-open', isActive); // Toggle scrolling
   });
 }
+
+// Close menu when clicking a link
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('show');
+    mobileFooter.classList.remove('show');
+    body.classList.remove('menu-open');
+  });
+});
+
+// Reset mobile menu state on window resize
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    menuToggle.classList.remove('active');
+    navLinks.classList.remove('show');
+    mobileFooter.classList.remove('show');
+    body.classList.remove('menu-open');
+  }
+});
 
 // FADE-IN ON SCROLL
 const faders = document.querySelectorAll('.fade-in-on-scroll');
@@ -52,16 +79,10 @@ function updateCosts() {
   // Display messages count
   msgCountEl.textContent = messages;
 
-  // Agent cost: assume $1 per message
+  // Agent cost: assume $0.50 per message
   const agentCost = messages * 0.50;
 
-  // AI cost: piecewise logic or tiered. Example:
-  //  up to 500 => $0.10 each
-  //  501 - 1000 => $0.09 each
-  //  1001 - 3000 => $0.08 each
-  //  3001 - 5000 => $0.07 each
-  //  5001 - 10000 => $0.06 each
-  //  >10000 => $0.05 each
+  // AI cost: piecewise logic or tiered
   const aiCost = calculateAICost(messages);
 
   // Update DOM
