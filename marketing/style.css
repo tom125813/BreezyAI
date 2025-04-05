@@ -690,13 +690,14 @@ body.menu-open {
   font-size: 1.8rem;
   font-weight: 500;
   margin-bottom: 2rem;
+  color: black; /* Match the screenshot's heading color */
 }
 
 .steps-row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem; /* Increased gap for better spacing */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
@@ -708,7 +709,7 @@ body.menu-open {
   padding: 2rem;
   border-radius: 6px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s;
   position: relative;
   border: 1px solid #0052ff;
@@ -740,13 +741,16 @@ body.menu-open {
 }
 
 .step-box h4 {
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Slightly larger for readability */
   font-weight: 500;
   margin-bottom: 0.5rem;
+  color: #333;
 }
 
 .step-box p {
   font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
   margin: 0;
 }
 
@@ -757,26 +761,60 @@ body.menu-open {
   align-self: center;
 }
 
+/* Adjustments for screens below 1000px */
 @media (max-width: 1000px) {
   .steps-row {
     flex-wrap: wrap;
+    gap: 1.5rem; /* Consistent gap */
   }
   .step-connector {
-    display: none;
+    display: none; /* Hide connectors as they don't appear in the screenshot */
   }
   .step-box {
-    width: 45%;
+    width: 45%; /* Two boxes per row */
     max-width: 250px;
   }
 }
 
+/* Mobile-specific adjustments */
 @media (max-width: 768px) {
-  .steps-row {
-    grid-template-columns: repeat(2, 1fr);
-    display: grid;
+  .steps-section {
+    padding: 2rem 0; /* Reduce padding for mobile */
   }
+
+  .steps-section h2 {
+    font-size: 1.6rem; /* Slightly smaller heading */
+    margin-bottom: 1.5rem;
+  }
+
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid as shown in the screenshot */
+    gap: 1rem; /* Slightly smaller gap for mobile */
+    padding: 0 1rem;
+  }
+
   .step-box {
-    width: 100%;
+    width: 100%; /* Full width within the grid cell */
+    max-width: none; /* Remove max-width restriction */
+    padding: 1.5rem; /* Slightly less padding for mobile */
+  }
+
+  .step-box::before {
+    font-size: 0.8rem; /* Smaller "Step" label on mobile */
+    padding: 0.4rem 1.2rem 0.4rem 0.4rem;
+  }
+
+  .step-box i {
+    font-size: 1.5rem; /* Smaller icon on mobile */
+  }
+
+  .step-box h4 {
+    font-size: 1.1rem;
+  }
+
+  .step-box p {
+    font-size: 0.9rem;
   }
 }
 
