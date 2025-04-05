@@ -60,12 +60,11 @@ faders.forEach(fader => {
   observer.observe(fader);
 });
 
-// Grab necessary elements
 const msgSlider = document.getElementById('msgSlider');
 const msgCountEl = document.getElementById('msgCount');
-const agentCostEl = document.getElementById('agentCost');
-const aiCostEl = document.getElementById('aiCost');
-const savingsEl = document.getElementById('savingsVal');
+const manualCostEl = document.getElementById('manualCost');
+const breezyCostEl = document.getElementById('breezyCost');
+const savingsEl = document.getElementById('savings');
 
 // On page load, and whenever the slider changes, recalc costs
 function init() {
@@ -79,20 +78,20 @@ function updateCosts() {
   // Display messages count
   msgCountEl.textContent = messages;
 
-  // Agent cost: assume $0.50 per message
-  const agentCost = messages * 0.50;
+  // Manual cost: assume $0.50 per message
+  const manualCost = messages * 0.50;
 
-  // AI cost: piecewise logic or tiered
-  const aiCost = calculateAICost(messages);
+  // Breezy cost: piecewise logic or tiered
+  const breezyCost = calculateBreezyCost(messages);
 
   // Update DOM
-  agentCostEl.textContent = agentCost.toFixed(2);
-  aiCostEl.textContent = aiCost.toFixed(2);
-  savingsEl.textContent = (agentCost - aiCost).toFixed(2);
+  manualCostEl.textContent = manualCost.toFixed(2);
+  breezyCostEl.textContent = breezyCost.toFixed(2);
+  savingsEl.textContent = (manualCost - breezyCost).toFixed(2);
 }
 
-// Example function for AI cost
-function calculateAICost(messages) {
+// Function for Breezy cost
+function calculateBreezyCost(messages) {
   let rate = 0.1; // default up to 500
   if (messages > 500 && messages <= 1000) {
     rate = 0.09;
@@ -110,3 +109,48 @@ function calculateAICost(messages) {
 
 // Initialize
 init();
+
+// FAQ TOGGLE FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', () => {
+  const helpItems = document.querySelectorAll('.help-item');
+
+  helpItems.forEach(item => {
+    // Make the entire help-item focusable for accessibility
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-expanded', 'false');
+
+    // Click Event Listener
+    item.addEventListener('click', (e) => {
+      // Prevent triggering if clicking a link inside
+      if (e.target.tagName === 'A') return;
+
+      const isActive = item.classList.contains('active');
+
+      // Close all other FAQ items
+      helpItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          otherItem.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle the clicked item
+      if (!isActive) {
+        item.classList.add('active');
+        item.setAttribute('aria-expanded', 'true');
+      } else {
+        item.classList.remove('active');
+        item.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Keyboard Accessibility: Toggle on Enter or Space key
+    item.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        item.click();
+      }
+    });
+  });
+});

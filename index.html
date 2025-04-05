@@ -24,18 +24,17 @@
   <link rel="stylesheet" href="marketing/style.css" />
 </head>
 <body>
-
   <!-- Optional Loading Overlay -->
   <div class="loading-overlay" id="loadingOverlay">
     <div class="spinner"></div>
   </div>
-  <!-- Header Section -->
+
   <!-- Header Section -->
   <header class="header">
     <nav class="navbar container">
-      <div class="logo">
+      <a href="/" class="logo no-decoration">
         <img src="images/textlogo.png" alt="Breezy Logo" class="logo-image">
-      </div>
+      </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html#hero" class="active">Home</a></li>
         <li><a href="index.html#why">Benefits</a></li>
@@ -60,33 +59,37 @@
     <div class="hero-inner container">
       <div class="hero-text">
         <h1>Automate Your Customer Engagement on Social Media with <span class="ai-powered"><strong>AI-Powered Replies</strong></span></h1>
-              <p>Boost sales and conversions effortlessly whilst saving a lot of time and money.</p>
-        <div class="container platforms-section">
+        <p>Boost sales and conversions effortlessly whilst saving a lot of time and money.</p>
+        <!--<div class="container platforms-section">
           <br><br>
-          <!--<h3>Supported Platforms</h3>--->
           <div class="platform-icons">
             <i class="fab fa-twitter"></i>
             <i class="fab fa-instagram"></i>
             <i class="fab fa-tiktok"></i>
             <i class="fab fa-whatsapp"></i>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="hero-image">
-        <img
-          src="images/hero3.png"
-          alt="AI Illustration"
-        />
+        <img src="images/hero3.png" alt="AI Illustration" />
       </div>
     </div>
   </section>
 
-  <!-- TRUSTED BY BUSINESSES-->
+  <!-- Commented-Out Alternative Hero Section (Full Image, No Text) -->
+  <!--
+  <section id="hero" class="hero-section-full-image fade-in-on-scroll">
+    <div class="hero-image-full">
+      <img src="images/hero-image.png" alt="Hero Image" />
+    </div>
+  </section>
+  -->
+
+  <!-- TRUSTED BY BUSINESSES -->
   <section class="trusted-section fade-in-on-scroll">
     <h2 style="color: #535353;">Trusted by Businesses Worldwide</h2>
     <div class="slider-wrap">
       <div class="slider">
-
         <div class="slide"><img src="https://placehold.co/80x80?text=Brand+4" alt="Brand 4" /></div>
         <div class="slide"><img src="https://placehold.co/80x80?text=Brand+5" alt="Brand 5" /></div>
         <div class="slide"><img src="https://placehold.co/80x80?text=Brand+1" alt="Brand 1" /></div>
@@ -129,7 +132,6 @@
               burden on both small and big businesses.
             </p>
           </div>
-
           <!-- Solution Column -->
           <div class="solution-col">
             <h3>The Solution</h3>
@@ -146,150 +148,99 @@
         <div class="feature-box">
           <i class="fas fa-bolt"></i>
           <h3>Boost Engagement & Sales</h3>
-          <p>Immediately respond to inquiries,
-capture leads, and maintain momentum
-with automated follow-ups,
-increasing conversion rates.</p>
+          <p>Immediately respond to inquiries, capture leads, and maintain momentum with automated follow-ups, increasing conversion rates.</p>
         </div>
         <div class="feature-box">
           <i class="fas fa-clock"></i>
           <h3>24/7 Availability</h3>
-          <p>Never miss a potential customer. Our
-AI replies around the clock, even when
-your team is offline.</p>
+          <p>Never miss a potential customer. Our AI replies around the clock, even when your team is offline.</p>
         </div>
         <div class="feature-box">
           <i class="fas fa-shield-alt"></i>
           <h3>Secure & Compliant</h3>
-          <p>We respect privacy and data integrity.
-Built-in encryption and compliance with
-major regulations.</p>
+          <p>We respect privacy and data integrity. Built-in encryption and compliance with major regulations.</p>
         </div>
       </div>
     </div>
-
   </section>
 
-
-    <!-- HOW EASY IS IT TO USE? -->
-    <section class="steps-section fade-in-on-scroll">
-      <div class="container">
-        <h2>How Easy Is It To Use?</h2>
-        <div class="steps-row">
-          <div class="step-box">
-            <i class="fas fa-user-plus"></i>
-            <h4>Step 1: Sign Up</h4>
-            <p>Create a free account in seconds and set up your profile.</p>
-          </div>
-          <div class="step-connector"></div>
-          <div class="step-box">
-            <i class="fas fa-link"></i>
-            <h4>Step 2: Connect</h4>
-            <p>Connect your social media pages in just a few clicks.</p>
-          </div>
-          <div class="step-connector"></div>
-          <div class="step-box">
-            <i class="fas fa-cogs"></i>
-            <h4>Step 3: Set Up</h4>
-            <p>Add FAQs, choose brand tone, and fine-tune your settings.</p>
-          </div>
-          <div class="step-connector"></div>
-          <div class="step-box">
-            <i class="fas fa-check-circle"></i>
-            <h4>Step 4: All Done</h4>
-            <p>Let the AI handle replies automatically. No more expensive agents.</p>
-          </div>
+  <!-- HOW EASY IS IT TO USE? -->
+  <section class="steps-section fade-in-on-scroll">
+    <div class="container">
+      <h2>How Easy Is It To Use?</h2>
+      <div class="steps-row">
+        <div class="step-box" data-step="1">
+          <i class="fas fa-user-plus"></i>
+          <h4>Sign Up</h4>
+          <p>Create a free account in seconds and set up your profile.</p>
         </div>
-        <br>
-      </div>
-    </section>
-
-
-  <section id="pricing" class="comparison-section fade-in-on-scroll">
-    <div class="comparison-container-container">
-    <div class="comparison-container">
-      <h2>Ready To See How Much You Would Save?</h2>
-      <p class="comparison-desc">
-        Drag the slider to estimate how many messages your business handles monthly
-        and see how much cheaper Breezy can be compared to hiring a human agent.
-      </p>
-
-      <!-- SLIDER WRAPPER -->
-      <div class="slider-wrapper">
-        <label for="msgSlider" class="slider-label">
-          <i class="fas fa-comments"></i> Monthly Messages
-        </label>
-        <input
-          type="range"
-          id="msgSlider"
-          name="msgSlider"
-          min="100"
-          max="10000"
-          step="100"
-          value="1000"
-        />
-        <div class="slider-values">
-          <span id="msgCount">1000</span> messages
+        <div class="step-connector"></div>
+        <div class="step-box" data-step="2">
+          <i class="fas fa-link"></i>
+          <h4>Connect</h4>
+          <p>Connect your social media pages in just a few clicks.</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-box" data-step="3">
+          <i class="fas fa-cogs"></i>
+          <h4>Set Up</h4>
+          <p>Add FAQs, choose brand tone, and fine-tune your settings.</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-box" data-step="4">
+          <i class="fas fa-check-circle"></i>
+          <h4>All Done</h4>
+          <p>Let the AI handle replies automatically. No more expensive agents.</p>
         </div>
       </div>
-
-
-        <!-- HOW EASY IS IT TO USE?
-        <section class="steps-section fade-in-on-scroll">
-          <div class="container">
-            <h2>How Easy Is It To Use?</h2>
-            <div class="steps-row">
-              <div class="step-box">
-                <i class="fas fa-user-plus"></i>
-                <h4>Step 1: Sign Up</h4>
-                <p>Create a free account in seconds and set up your profile.</p>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step-box">
-                <i class="fas fa-link"></i>
-                <h4>Step 2: Connect</h4>
-                <p>Connect your social media pages in just a few clicks.</p>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step-box">
-                <i class="fas fa-cogs"></i>
-                <h4>Step 3: Set Up</h4>
-                <p>Add FAQs, choose brand tone, and fine-tune your settings.</p>
-              </div>
-              <div class="step-connector"></div>
-              <div class="step-box">
-                <i class="fas fa-check-circle"></i>
-                <h4>Step 4: All Done</h4>
-                <p>Let the AI handle replies automatically. No more expensive agents.</p>
-              </div>
-            </div>
-            <br>
-          </div>
-        </section>-->
-
-
-      <!-- RESULTS DISPLAY -->
-      <div class="results-display">
-        <div class="result-card agent-cost">
-          <h3><i class="fas fa-user"></i> Agent Cost</h3>
-          <p class="cost">$<span id="agentCost">0</span></p>
-        </div>
-        <div class="result-card ai-cost">
-          <h3><i class="fas fa-robot"></i> Breezy Cost</h3>
-          <p class="cost">$<span id="aiCost">0</span></p>
-        </div>
-        <div class="result-card savings">
-          <h3><i class="fas fa-piggy-bank"></i> Your Savings</h3>
-          <p class="cost">$<span id="savingsVal">0</span></p>
-        </div>
-      </div>
-
-      <p class="note">
-        * Assumes an average cost of $0.50 per message for a human agent.
-        Bulk AI credits provide discounts for higher volumes.
-      </p>
+      <br>
     </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section id="pricing" class="comparison-section fade-in-on-scroll">
+    <div class="container">
+      <h2>Ready to See How Much You’d Save?</h2>
+      <p class="comparison-desc">Calculate your savings by automating customer engagement with Breezy.</p>
+      <div class="comparison-grid">
+        <div class="comparison-content">
+          <div class="slider-box">
+            <div class="slider-label">
+              <i class="fas fa-comment"></i> Number of Monthly Messages
+            </div>
+            <input type="range" id="msgSlider" min="100" max="10000" value="1000" step="100">
+            <div class="slider-values">
+              Messages per month: <span id="msgCount">1000</span>
+            </div>
+          </div>
+          <div class="results-grid">
+            <div class="result-card">
+              <h3><i class="fas fa-users"></i> Manual Handling</h3>
+              <p class="cost">$<span id="manualCost">500</span></p>
+              <p class="note">Based on hiring agents at $0.50 per message.</p>
+            </div>
+            <div class="result-card">
+              <h3><i class="fas fa-robot"></i> With Breezy</h3>
+              <p class="cost">$<span id="breezyCost">50</span></p>
+              <p class="note">Based on Breezy’s subscription at $0.05 per message.</p>
+            </div>
+            <div class="result-card savings">
+              <h3><i class="fas fa-piggy-bank"></i> Your Savings</h3>
+              <p class="cost">$<span id="savings">450</span></p>
+              <p class="note">Total savings by automating with Breezy.</p>
+            </div>
+          </div>
         </div>
+        <div class="comparison-side">
+          <div class="side-card">
+            <img src="https://placehold.co/60x60?text=MB" alt="Michael Brown Profile" class="side-card-img">
+            <i class="fas fa-quote-left"></i>
+            <p>"Breezy saved us hours of manual work every day. Highly recommend!"</p>
+            <h4>— Michael Brown, Founder</h4>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- FINAL CTA -->
@@ -301,20 +252,18 @@ major regulations.</p>
         <strong class="free-credits">Get 50 free credits on us!</strong>
       </p>
       <div class="cta-buttons">
-        <a href="signup.html" class="cta-large">Get Started Now</a>
-        <a href="dashboard.html" class="cta-outline">
+        <a href="signup.html" class="cta-btn">Get Started Now</a>
+        <a href="dashboard.html" class="cta-btn secondary-btn">
           <i class="fas fa-play-circle"></i> View Demo
         </a>
       </div>
     </div>
   </section>
 
-
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-content container">
       <div class="footer-logo">
-        <!---<i class="fas fa-robot"></i> Breezy--->
         <img src="images/textlogo_dark.png" style="height: 50px;"></img>
       </div>
       <div class="payment-icons">
@@ -325,7 +274,6 @@ major regulations.</p>
         <i class="fab fa-cc-discover" title="Discover"></i>
         <i class="fab fa-apple-pay" title="Apple Pay"></i>
         <i class="fab fa-google-pay" title="Google Pay"></i>
-        <!-- Add more icons as needed -->
       </div>
       <p>© 2025 Breezy. All rights reserved.</p>
     </div>
