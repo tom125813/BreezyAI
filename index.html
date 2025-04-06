@@ -7,18 +7,13 @@
   <title>Home - Breezy</title>
   <link rel="icon" type="image/x-icon" href="images/logo.ico">
 
-  <!-- Google Font: Open Sans (400 & 500) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome for Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
   <!-- Home Page CSS -->
   <link rel="stylesheet" href="marketing/style.css" />
@@ -60,30 +55,12 @@
       <div class="hero-text">
         <h1>Automate Your Customer Engagement on Social Media with <span class="ai-powered"><strong>AI-Powered Replies</strong></span></h1>
         <p>Boost sales and conversions effortlessly whilst saving a lot of time and money.</p>
-        <!--<div class="container platforms-section">
-          <br><br>
-          <div class="platform-icons">
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-tiktok"></i>
-            <i class="fab fa-whatsapp"></i>
-          </div>
-        </div>-->
       </div>
       <div class="hero-image">
-        <img src="images/hero3.png" alt="AI Illustration" />
+        <img src="https://placehold.co/500x400?text=AI+Illustration" alt="AI Illustration" />
       </div>
     </div>
   </section>
-
-  <!-- Commented-Out Alternative Hero Section (Full Image, No Text) -->
-  <!--
-  <section id="hero" class="hero-section-full-image fade-in-on-scroll">
-    <div class="hero-image-full">
-      <img src="images/hero-image.png" alt="Hero Image" />
-    </div>
-  </section>
-  -->
 
   <!-- TRUSTED BY BUSINESSES -->
   <section class="trusted-section fade-in-on-scroll">
@@ -144,7 +121,7 @@
           </div>
         </div>
       </section>
-      <div class="three-features">
+      <div class="three-features fade-in-on-scroll">
         <div class="feature-box">
           <i class="fas fa-bolt"></i>
           <h3>Boost Engagement & Sales</h3>
@@ -210,23 +187,23 @@
             </div>
             <input type="range" id="msgSlider" min="100" max="10000" value="1000" step="100">
             <div class="slider-values">
-              Messages per month: <span id="msgCount">1000</span>
+              Messages per month: <span id="msgCount" data-key="msgCount">1,000</span>
             </div>
           </div>
           <div class="results-grid">
             <div class="result-card">
-              <h3><i class="fas fa-users"></i> Manual Handling</h3>
-              <p class="cost">$<span id="manualCost">500</span></p>
+              <h3><i class="fas fa-users"></i> With Agent</h3>
+              <p class="cost">$<span id="manualCost" data-key="manualCost">500</span></p>
               <p class="note">Based on hiring agents at $0.50 per message.</p>
             </div>
             <div class="result-card">
               <h3><i class="fas fa-robot"></i> With Breezy</h3>
-              <p class="cost">$<span id="breezyCost">50</span></p>
-              <p class="note">Based on Breezy’s subscription at $0.05 per message.</p>
+              <p class="cost">$<span id="breezyCost" data-key="breezyCost">50</span></p>
+              <p class="note">Based on 1 credit per message.</p>
             </div>
             <div class="result-card savings">
               <h3><i class="fas fa-piggy-bank"></i> Your Savings</h3>
-              <p class="cost">$<span id="savings">450</span></p>
+              <p class="cost">$<span id="savings" data-key="savings">450</span></p>
               <p class="note">Total savings by automating with Breezy.</p>
             </div>
           </div>
