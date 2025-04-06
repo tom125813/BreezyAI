@@ -6,25 +6,199 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Help - Breezy</title>
   <link rel="icon" type="image/x-icon" href="images/logo.ico">
-  <!-- Google Font: Open Sans (400 & 500) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
   <!-- Styles -->
   <link rel="stylesheet" href="marketing/style.css"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Fade In Animation for Sections and FAQs */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .help-section {
+      flex: 1;
+      padding: 4rem 2rem;
+      text-align: center;
+      background-color: #F8F9FA;
+    }
+    .help-section .subheader {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+    }
+    .help-container {
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+    }
+    .help-item {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+    .help-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .help-item h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .help-item .content {
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+      max-height: 0;
+    }
+    .help-item.active .content {
+      max-height: 250px; /* Adjust based on content length */
+    }
+    .help-item p {
+      margin: 0;
+      padding-top: 1rem;
+      color: #555;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    }
+    .help-item.active p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .toggle-icon {
+      transition: transform 0.4s ease-in-out;
+    }
+    .help-item.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Curated Help Section */
+    .curated-help-section {
+      padding: 3rem 2rem;
+      background-color: #fff;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+    .curated-help-section h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .curated-help-section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+    }
+    .curated-help-section .cta-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background-color: #0052ff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .curated-help-section .cta-btn:hover {
+      transform: scale(1.05);
+      background-color: #003ecc;
+    }
+    /* Base fade-in animation for page elements */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* FAQ item styling */
+    .help-item {
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .help-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .help-item h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* FAQ content styling & animations */
+    .help-item .content {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.35s ease;
+    }
+
+    .help-item .content p {
+      margin: 0;
+      padding-top: 1rem;
+      color: #555;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    /* Toggle icon styling & animation */
+    .toggle-icon {
+      transition: transform 0.35s ease;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <!-- Optional Loading Overlay -->
   <div class="loading-overlay" id="loadingOverlay">
     <div class="spinner"></div>
   </div>
+
   <!-- Header Section -->
   <header class="header">
     <nav class="navbar container">
@@ -34,7 +208,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#why">Benefits</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#pricing">Savings</a></li>
         <li><a href="help.html" class="active">Help</a></li>
         <li class="mobile-footer">
           <p>© Breezy 2025</p>
@@ -49,100 +223,98 @@
       </div>
     </nav>
   </header>
-  <section class="help-section">
+
+  <section class="help-section fade-in">
     <h1 style="text-align: center;">Help & FAQs</h1>
+    <p class="subheader">Find answers to common questions or reach out for personalized support.</p>
     <div class="help-container">
-      <div class="help-item">
+      <div class="help-item fade-in">
         <h3>How do credits work?
           <i class="fas fa-chevron-down toggle-icon"></i>
         </h3>
-        <p>
-          Each automated reply costs 1 credit. Your account starts
-          with free credits, and you can purchase additional bundles
-          in the dashboard any time.
-        </p>
+        <div class="content">
+          <p>Each automated reply costs 1 credit. Your account starts with free credits, and you can purchase additional bundles in the dashboard any time.</p>
+        </div>
       </div>
-      <div class="help-item">
-        <h3>How many credits are used per message?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          Typically, each AI-generated response uses 1 credit. If the
-          AI responds multiple times in a single interaction, each
-          response consumes an additional credit.
-        </p>
+      <div class="help-item fade-in">
+        <h3>How many credits are used per message?
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="content">
+          <p>Typically, each AI-generated response uses 1 credit. If the AI responds multiple times in a single interaction, each response consumes an additional credit.</p>
+        </div>
       </div>
-      <div class="help-item">
-        <h3>Can I customize the AI’s brand tone?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          Yes! Our configuration panel offers 15 preset tones.
-          You can choose one that aligns best with your brand’s
-          personality and voice.
-        </p>
+      <div class="help-item fade-in">
+        <h3>Can I customize the AI’s brand tone?
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="content">
+          <p>Yes! Our configuration panel offers 15 preset tones. You can choose one that aligns best with your brand’s personality and voice.</p>
+        </div>
       </div>
-      <div class="help-item">
-        <h3>Is my data secure?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          We use enterprise-grade encryption and maintain strict
-          compliance with industry standards to keep your information
-          safe.
-        </p>
+      <div class="help-item fade-in">
+        <h3>Is my data secure?
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="content">
+          <p>We use enterprise-grade encryption and maintain strict compliance with industry standards to keep your information safe.</p>
+        </div>
       </div>
-      <div class="help-item">
-        <h3>What if I run out of credits?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          The AI will pause responding once credits are depleted.
-          You can buy more credits at any time from your dashboard,
-          or you can continue replying manually.
-        </p>
+      <div class="help-item fade-in">
+        <h3>What if I run out of credits?
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="content">
+          <p>The AI will pause responding once credits are depleted. You can buy more credits at any time from your dashboard, or you can continue replying manually.</p>
+        </div>
       </div>
-      <div class="help-item">
-        <h3>Is there a monthly subscription fee?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          No. We operate on a credit-based pay-as-you-go model.
-          You only pay when you need more replies, making it more
-          flexible and cost-effective.
-        </p>
+      <div class="help-item fade-in">
+        <h3>Is there a monthly subscription fee?
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="content">
+          <p>No. We operate on a credit-based pay-as-you-go model. You only pay when you need more replies, making it more flexible and cost-effective.</p>
+        </div>
       </div>
-      <div class="help-item">
-        <h3>How do I handle complex messages?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          You can configure advanced FAQs and brand voice settings.
-          The AI will interpret user messages contextually,
-          ensuring appropriate and accurate replies.
-        </p>
+      <div class="help-item fade-in">
+        <h3>How do I handle complex messages?
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="content">
+          <p>You can configure advanced FAQs and brand voice settings. The AI will interpret user messages contextually, ensuring appropriate and accurate replies.</p>
+        </div>
       </div>
-      <div class="help-item">
-        <h3>Can I integrate with multiple social media accounts?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          Absolutely. We offer multi-platform integrations so you
-          can manage replies across all your channels from a single
-          dashboard.
-        </p>
+      <div class="help-item fade-in">
+        <h3>Can I integrate with multiple social media accounts?
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="content">
+          <p>Absolutely. We offer multi-platform integrations so you can manage replies across all your channels from a single dashboard.</p>
+        </div>
       </div>
-      <div class="help-item">
-        <h3>Does the AI learn over time?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          Yes, our AI model refines its understanding through
-          interactions, constantly improving response accuracy
-          and relevance.
-        </p>
-      </div>
-      <div class="help-item">
-        <h3>Need more help?<i class="fas fa-chevron-down toggle-icon"></i></h3>
-        <p>
-          Contact our support team at
-          <a href="mailto:support@autoreply.ai">support@autoreply.ai</a>
-          and we’ll be glad to assist!
-        </p>
+      <div class="help-item fade-in">
+        <h3>Does the AI learn over time?
+          <i class="fas fa-chevron-down toggle-icon"></i>
+        </h3>
+        <div class="content">
+          <p>Yes, our AI model refines its understanding through interactions, constantly improving response accuracy and relevance.</p>
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- Curated Help Section -->
+  <section class="curated-help-section fade-in">
+    <h2>Still Need Assistance?</h2>
+    <p>Get personalized, curated help from our support team by sending us an email.</p>
+    <a href="mailto:support@autoreply.ai" class="cta-btn">Contact Support</a>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-content container">
       <div class="footer-logo">
-        <!---<i class="fas fa-robot"></i> Breezy--->
-        <img src="images/textlogo_dark.png" style="height: 50px;"></img>
+        <img src="images/textlogo_dark.png" style="height: 50px;" alt="Breezy Logo">
       </div>
       <div class="payment-icons">
         <i class="fab fa-cc-visa" title="Visa"></i>
@@ -152,7 +324,6 @@
         <i class="fab fa-cc-discover" title="Discover"></i>
         <i class="fab fa-apple-pay" title="Apple Pay"></i>
         <i class="fab fa-google-pay" title="Google Pay"></i>
-        <!-- Add more icons as needed -->
       </div>
       <p>© 2025 Breezy. All rights reserved.</p>
     </div>
@@ -161,45 +332,109 @@
   <!-- JS -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('FAQ Toggle JavaScript is running.');
+    // Simple fade-in for page elements on load
+    // First apply the fade-in animations with proper timing
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach((element, index) => {
+      // Set a delay based on the element's position
+      setTimeout(() => {
+        element.classList.add('visible');
+      }, 100 + index * 100); // Slightly shorter delay for smoother appearance
+    });
 
-    // Select all FAQ items
-    const helpItems = document.querySelectorAll('.help-item');
+    // Create a new intersection observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // If element is visible
+        if (entry.isIntersecting) {
+          // Add visible class after a small delay
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 150);
+          // Stop observing once it's visible
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
 
-    helpItems.forEach(item => {
-      // Make the entire help-item focusable for accessibility
+    // Start observing all fade elements
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+
+    // Handle FAQ interactions
+    const faqItems = document.querySelectorAll('.help-item');
+
+    faqItems.forEach(item => {
+      // Set accessibility attributes
       item.setAttribute('tabindex', '0');
       item.setAttribute('role', 'button');
       item.setAttribute('aria-expanded', 'false');
 
-      // Click Event Listener
-      item.addEventListener('click', () => {
-        // Determine if the clicked item is already active
-        const isActive = item.classList.contains('active');
+      // Click handler for FAQ items
+      item.addEventListener('click', function() {
+        // Toggle active state
+        const isActive = this.classList.contains('active');
 
-        // Close all FAQ items
-        helpItems.forEach(otherItem => {
-          otherItem.classList.remove('active');
-          otherItem.setAttribute('aria-expanded', 'false');
+        // Close all other items first
+        faqItems.forEach(otherItem => {
+          if (otherItem !== this && otherItem.classList.contains('active')) {
+            toggleFAQ(otherItem, false);
+          }
         });
 
-        // If the clicked item was not active, activate it
-        if (!isActive) {
-          item.classList.add('active');
-          item.setAttribute('aria-expanded', 'true');
-        }
+        // Toggle this item
+        toggleFAQ(this, !isActive);
       });
 
-      // Keyboard Accessibility: Toggle on Enter or Space key
-      item.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault(); // Prevent default behavior (e.g., scrolling on Space)
-          item.click(); // Trigger the click event
+      // Keyboard handler
+      item.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
         }
       });
     });
-  });
 
+    // Helper function to toggle FAQ state with smooth animations
+    function toggleFAQ(item, open) {
+      const content = item.querySelector('.content');
+      const paragraph = item.querySelector('.content p');
+      const icon = item.querySelector('.toggle-icon');
+
+      if (open) {
+        // Open the FAQ
+        item.classList.add('active');
+        item.setAttribute('aria-expanded', 'true');
+
+        // Animate content height
+        content.style.height = content.scrollHeight + 'px';
+
+        // Animate paragraph and icon
+        paragraph.style.opacity = '1';
+        paragraph.style.transform = 'translateY(0)';
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        // Close the FAQ
+        item.classList.remove('active');
+        item.setAttribute('aria-expanded', 'false');
+
+        // Get current height and set it explicitly before collapsing
+        content.style.height = content.scrollHeight + 'px';
+
+        // Force a reflow to ensure the height is applied
+        content.offsetHeight;
+
+        // Now collapse
+        content.style.height = '0';
+
+        // Animate paragraph and icon
+        paragraph.style.opacity = '0';
+        paragraph.style.transform = 'translateY(-10px)';
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  });
   </script>
   <script src="marketing/script.js"></script>
 </body>

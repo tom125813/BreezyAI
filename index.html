@@ -33,7 +33,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html#hero" class="active">Home</a></li>
         <li><a href="index.html#why">Benefits</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#pricing">Savings</a></li>
         <li><a href="help.html">Help</a></li>
         <li class="mobile-footer">
           <p>© Breezy 2025</p>
@@ -241,7 +241,7 @@
   <footer class="footer">
     <div class="footer-content container">
       <div class="footer-logo">
-        <img src="images/textlogo_dark.png" style="height: 50px;"></img>
+        <img src="images/textlogo_dark.png" style="height: 50px;" alt="Breezy Logo">
       </div>
       <div class="payment-icons">
         <i class="fab fa-cc-visa" title="Visa"></i>
@@ -257,6 +257,48 @@
   </footer>
 
   <!-- JS -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Navbar active state based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function updateActiveNav() {
+      const scrollPosition = window.scrollY + 100; // Offset for header height
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(`#${sectionId}`)) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+
+      // Special case for top of page (Home)
+      if (scrollPosition < sections[0].offsetTop) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').includes('#hero')) {
+            link.classList.add('active');
+          }
+        });
+      }
+    }
+
+    // Update on scroll
+    window.addEventListener('scroll', updateActiveNav);
+
+    // Initial check
+    updateActiveNav();
+  });
+  </script>
   <script src="marketing/script.js"></script>
 </body>
 </html>

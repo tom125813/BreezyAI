@@ -749,7 +749,7 @@ body.menu-open {
 }
 
 .step-box p {
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   margin: 0;
 }
 
@@ -2141,4 +2141,77 @@ section[id] {
   transform: translateY(1.5em); /* Slide down instead of left */
   opacity: 0;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+/***********************************************
+  NAV / HEADER (CTA Buttons Flash Fix)
+***********************************************/
+.cta-btn {
+  background: #0052ff;
+  color: #fff;
+  padding: 0.66rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 82, 255, 0.3);
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0052ff;
+  z-index: -1;
+}
+
+.cta-btn:hover::before {
+  background: #003ecc;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: none;
+}
+
+.cta-btn:active {
+  transform: scale(0.95);
+}
+
+.cta-btn.secondary-btn {
+  background: transparent;
+  color: #0052ff;
+  border: 2px solid #0052ff;
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.cta-btn.secondary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+}
+
+.cta-btn.secondary-btn:hover::before {
+}
+
+.cta-btn.secondary-btn:hover {
+  color: #fff;
+  box-shadow: none;
+  transform: scale(1.05);
+}
+
+.cta-btn.secondary-btn:active {
+  transform: scale(0.95);
 }
